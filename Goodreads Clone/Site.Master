@@ -19,31 +19,25 @@
     <meta charset="utf-8" />
 
     <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="Content/bootstrap-custom.css" rel="stylesheet" />
+    <link href="Styles/bootstrap-custom.css" rel="stylesheet" />
+    <link href="Styles/all.css" rel="stylesheet" />
 </head>
 
 <!-- BODY -->
 <body>
     <!-- HEADER START -->
-    <header class="container">
-        <h1>Goodreads Clone</h1>
+    <header>
+        <!-- NAV START -->
+        <nav class="">
+            
+        </nav><!-- NAV END -->
     </header><!-- HEADER END -->
-
-    <!-- NAV START -->
-    <nav class="container navbar navbar-expand-lg navbar-light bg-light">
-        <ul class="navbar-nav nav-tabs">
-            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">New Book</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">My Lists</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Intelligence</a></li>
-        </ul>
-    </nav><!-- NAV END -->
 
     <aside>
 
     </aside>
 
-    <main class="container">
+    <main class="">
         <form id="form1" runat="server">
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -52,7 +46,7 @@
         </form>
     </main>
 
-    <footer class="container">
+    <footer class="">
 
     </footer>
     
