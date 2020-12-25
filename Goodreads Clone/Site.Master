@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#"
+    AutoEventWireup="true"
+    CodeBehind="Site.master.cs"
+    Inherits="Goodreads_Clone.Site" %>
+
+<!DOCTYPE html>
+
+<!-- HTML DOCUMENT -->
+<html>
+
+<!-- HEAD -->
+<head runat="server">
+    <title>Goodreads Clone</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <meta name="author" content="Mayuresh Patel" />
+        <meta name="description" content="This is a reading management system that functions like Goodreads.com but has my own look and feel" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8" />
+
+        <link href="Content/bootstrap.css" rel="stylesheet" />
+    </asp:ContentPlaceHolder>
+</head>
+
+<!-- BODY -->
+<body>
+    <header class="container">
+        <h1>Goodreads Clone</h1>
+    </header>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
