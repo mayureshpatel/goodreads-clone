@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goodreads Clone", "Goodreads Clone\Goodreads Clone.csproj", "{3311CF2D-FDC2-43CB-BA02-0204F10D9157}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3311CF2D-FDC2-43CB-BA02-0204F10D9157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3311CF2D-FDC2-43CB-BA02-0204F10D9157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3311CF2D-FDC2-43CB-BA02-0204F10D9157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3311CF2D-FDC2-43CB-BA02-0204F10D9157}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD80088B-BFCA-4822-A916-DEB286E9B20E}
+	EndGlobalSection
+EndGlobal
