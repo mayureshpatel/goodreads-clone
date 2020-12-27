@@ -29,7 +29,7 @@
     <header>
         <!-- NAV START -->
         <div class="logo">
-            <a href="default.aspx">Goodreads</a>
+            <a href="default.aspx">goodreads</a>
         </div>
         
         <nav>
@@ -47,6 +47,15 @@
                     <a href="#">Intelligence</a>
                 </li>
             </ul>
+
+            <form class="book-search-form">
+                <div class="book-search-bar">
+                    <input type="text" name="searchTextBox" id="searchTextBox" runat="server" placeholder="Search Books" />
+                    <button type="submit" name="searchBookButton" id="searchBookButton" runat="server">
+                        <i class="fa fad fa-search"></i>
+                    </button>
+                </div>
+            </form>
         </nav><!-- NAV END -->
     </header><!-- HEADER END -->
 
