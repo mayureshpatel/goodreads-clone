@@ -1,5 +1,9 @@
-﻿body {
+﻿/*
+    Page Grid Styling
+*/
+body {
     display: grid;
+    width: 100%;
 
     grid-template-rows: 70px 1fr 150px;
     grid-template-columns: 200px 1fr;
@@ -15,8 +19,18 @@
 header {
     grid-area: header;
 
+    display: grid;
+
+    grid-template-rows: 1fr;
+    grid-template-columns: 150px 1fr;
+
+    grid-template-areas:
+        "logo nav";
+
     background-color: lightblue;
 }
+
+
 
 main {
     grid-area: main;
@@ -34,4 +48,8 @@ footer {
     grid-area: footer;
 
     background-color: lightsteelblue;
+}
+
+h1 {
+    
 }

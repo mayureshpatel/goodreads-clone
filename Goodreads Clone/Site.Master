@@ -18,8 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
 
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="Styles/bootstrap-custom.css" rel="stylesheet" />
+    <link href="Styles/reset.css" rel="stylesheet" />
+    <link href="Styles/main.css" rel="stylesheet" />
     <link href="Styles/all.css" rel="stylesheet" />
 </head>
 
@@ -28,8 +28,25 @@
     <!-- HEADER START -->
     <header>
         <!-- NAV START -->
-        <nav class="">
-            
+        <nav>
+            <a href="default.aspx">
+                <h1>Goodreads</h1>
+            </a>
+
+            <ul>
+                <li>
+                    <a href="/default.aspx">Home</a>
+                </li>
+                <li>
+                    <a href="#">New Book</a>
+                </li>
+                <li>
+                    <a href="#">My Lists</a>
+                </li>
+                <li>
+                    <a href="#">Intelligence</a>
+                </li>
+            </ul>
         </nav><!-- NAV END -->
     </header><!-- HEADER END -->
 
@@ -37,7 +54,7 @@
 
     </aside>
 
-    <main class="">
+    <main>
         <form id="form1" runat="server">
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -46,7 +63,7 @@
         </form>
     </main>
 
-    <footer class="">
+    <footer>
 
     </footer>
     

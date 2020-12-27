@@ -156,8 +156,9 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Styles\all.css" />
-    <Content Include="Styles\bootstrap-custom.css" />
+    <Content Include="Styles\main.css" />
     <Content Include="default.aspx" />
+    <Content Include="Styles\reset.css" />
     <Content Include="webfonts\fa-brands-400.svg" />
     <Content Include="webfonts\fa-regular-400.svg" />
     <Content Include="webfonts\fa-solid-900.svg" />
