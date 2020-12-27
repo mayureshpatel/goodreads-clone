@@ -3,7 +3,8 @@
 */
 body {
     display: grid;
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
 
     grid-template-rows: 70px 1fr 150px;
     grid-template-columns: 200px 1fr;
@@ -30,8 +31,6 @@ header {
     background-color: lightblue;
 }
 
-
-
 main {
     grid-area: main;
 
@@ -50,6 +49,37 @@ footer {
     background-color: lightsteelblue;
 }
 
-h1 {
+/* HEADER GRID STYLING */
+.logo {
+    grid-area: logo;
+
+    background-color: pink;
+}
+
+nav {
+    grid-area: nav;
+
+    background-color: lightskyblue;
+}
+
+/* LOGO STYLING */
+.logo {
     
 }
+
+.logo a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+       
+    width: 75%;
+    height:75%;
+    margin: 10px auto 8px auto;
+
+    text-decoration: none;
+    font-size: 24px;
+    text-shadow: 0px 0px 1px #000000;
+
+    border: 2px solid black;
+}
+

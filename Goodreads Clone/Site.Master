@@ -28,11 +28,11 @@
     <!-- HEADER START -->
     <header>
         <!-- NAV START -->
+        <div class="logo">
+            <a href="default.aspx">Goodreads</a>
+        </div>
+        
         <nav>
-            <a href="default.aspx">
-                <h1>Goodreads</h1>
-            </a>
-
             <ul>
                 <li>
                     <a href="/default.aspx">Home</a>
