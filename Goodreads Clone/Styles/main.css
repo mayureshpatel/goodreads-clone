@@ -1,10 +1,22 @@
 ﻿/*
-    Page Grid Styling
+    =================================================================
+
+    FONTS
+
+    =================================================================
 */
 @font-face {
     src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
     font-family: "Montserrat", sans serif;
 }
+
+/*
+    =================================================================
+
+    PAGE GRID STYLING
+
+    =================================================================
+*/
 body {
     display: grid;
     width: 100%;
@@ -25,14 +37,20 @@ body {
 
 header {
     grid-area: header;
+
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 250px 1fr;
-    grid-template-areas: "logo nav";
+    grid-template-columns: 250px 2fr 1fr;
+    grid-template-areas: "logo nav search-bar";
+
     position: fixed;
+
     width: 100%;
     height: 60px;
     background-color: #f4f1ea;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 main {
@@ -47,7 +65,13 @@ footer {
     grid-area: footer;
 }
 
-/* HEADER GRID STYLING */
+/*
+    =================================================================
+
+    HEADER GRID AREAS
+
+    =================================================================
+*/
 .logo {
     grid-area: logo;
 }
@@ -56,7 +80,17 @@ nav {
     grid-area: nav;
 }
 
-/* LOGO STYLING */
+.book-search-form {
+    grid-area: search-bar;
+}
+
+/*
+    =================================================================
+
+    HEADER LOGO STYLING
+
+    =================================================================
+*/
 .logo {
     display: flex;
     justify-content: center;
@@ -74,16 +108,66 @@ nav {
     color: #382110;
 }
 
-/* NAV STYLING */
+/*
+    =================================================================
+
+    HEADER NAV STYLING
+
+    =================================================================
+*/
+/*
+    NAV
+*/
 nav {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+nav form {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+    position: relative;
+
+    width: 85%;
+}
+
+nav form #hiddenSearchTextBox {
+    width: 100%;
+    padding: 3px 0px 3px 5px;
+    box-shadow: 0px 0px 1px black;
+
+    border: none;
+    
+    font-size: 18px;
+}
+
+nav form #hiddenSearchTextBox:focus {
+    outline: none;
+    box-shadow: 0px 0px 2px black;
+}
+
+nav form #resetSearchButton {
+    position: absolute;
+    right: 5px;
+    background-color: white;
+
+    border: none;
+
+    color: blue;
+}
+
+nav form #resetSearchButton:focus {
+    outline: none;
+    
+    border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
 nav ul {
     display: flex;
-    justify-content: end;
+    justify-content: space-evenly;
     align-items: center;
     flex-grow: 1;
 
@@ -92,34 +176,44 @@ nav ul {
 }
 
 nav ul li {
+    height: 100%;
+}
+
+nav ul li a {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    height: 50%;
-    width: 50%;
-}
-
-nav ul li a {
-    padding: 8px;
+    height: 100%;
+    padding: 0px 10px;
 
     font-size: 18px;
     text-decoration: none;
     color: #382110;
 }
 
-.book-search-form {
-    flex-grow: 2;
+nav ul li a i {
+    padding: 0px 3px;
 }
 
-.book-search-bar {
+nav ul li a:hover {
+    background-color: #382110;
+    color: white;
+}
+
+/*
+    Search Bar
+*/
+.book-search-form {
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+.book-search-bar {
     position: relative;
 
-    width: 85%;
+    width: 90%;
     margin: 0 auto;
 
     font-size: 24px;
@@ -141,19 +235,99 @@ nav ul li a {
     box-shadow: 0px 0px 2px black;
 }
 
-.book-search-bar button {
+.book-search-bar #searchBookButton {
     position: absolute;
     right: 0px;
-
-    padding: 3px 20px;
+    bottom: 5px;
+    right: 10px;
     background-color: white;
     border: none;
-
-    font-size: 18px;
+    
+    font-size: 16px;
     color: lightgray;
 }
 
-.book-search-bar button:focus {
-    outline: none;
+/*
+=================================================================
 
+MEDIA QUERIES
+
+=================================================================
+*/
+    @media screen and (max-width: 1200px) {
+    }
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 900px) {
+    /*
+        Change the header grid
+    */
+    body {
+        grid-template-rows: 120px 1fr 150px;
+    }
+
+    header {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 250px 1fr;
+        grid-template-areas: 
+            "logo search-bar"
+            "nav nav";
+
+        height: 120px;
+    }
+
+    /*
+        Nav styling
+    */
+    nav {
+        border-top: 1px solid rgba(0, 0, 0, 0.15);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    nav ul {
+        justify-content: space-evenly;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 576px) {
+    /*
+        Change Header Grid
+    */
+    header {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 10fr;
+        grid-template-areas: 
+            "search-bar logo"
+            "nav nav";
+    }
+
+    /*
+        Search Bar
+    */
+
+    .book-search-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        position: relative;
+    }
+
+    .book-search-bar #searchBookButton {
+        position: static;
+        background-color: #f4f1ea;
+        font-size: 28px;
+        color: #000000;
+    }
+
+    .book-search-bar #searchTextBox {
+        display: none;
+    }
 }

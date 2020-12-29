@@ -21,43 +21,56 @@
     <link href="Styles/reset.css" rel="stylesheet" />
     <link href="Styles/main.css" rel="stylesheet" />
     <link href="Styles/all.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-3.5.1.js"></script>
+    <script src="Scripts/popper.js"></script>
+    <script src="Scripts/master-main.js"></script>
 </head>
 
-<!-- BODY -->
+<!-- ================= BODY START ================= -->
 <body>
-    <!-- HEADER START -->
+    <!-- ================= HEADER START ================= -->
     <header>
-        <!-- NAV START -->
+        <!-- ================= NAV START ================= -->
         <div class="logo">
             <a href="default.aspx">goodreads</a>
         </div>
         
         <nav>
-            <ul>
+            <form id="nav-search-form">
+                <input type="text" name="searchTextBox" id="hiddenSearchTextBox" runat="server" placeholder="Search Books" />
+                <button type="reset" name="resetSearchButton" id="resetSearchButton">cancel</button>
+            </form>
+            <ul id="nav-ul">
                 <li>
                     <a href="/default.aspx">Home</a>
-                </li>
-                <li>
-                    <a href="#">New Book</a>
                 </li>
                 <li>
                     <a href="#">My Lists</a>
                 </li>
                 <li>
-                    <a href="#">Intelligence</a>
+                    <a href="#">
+                        Browse
+                        <i class="fa fa-xs fa-angle-down"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Add Book</a>
                 </li>
             </ul>
 
-            <form class="book-search-form">
-                <div class="book-search-bar">
-                    <input type="text" name="searchTextBox" id="searchTextBox" runat="server" placeholder="Search Books" />
-                    <button type="submit" name="searchBookButton" id="searchBookButton" runat="server">
-                        <i class="fa fad fa-search"></i>
-                    </button>
-                </div>
-            </form>
-        </nav><!-- NAV END -->
-    </header><!-- HEADER END -->
+
+        </nav><!-- ================= NAV END ================= -->
+
+        <form class="book-search-form">
+            <div class="book-search-bar">
+                <input type="text" name="searchTextBox" id="searchTextBox" runat="server" placeholder="Search Books" />
+                <button type="button" name="searchBookButton" id="searchBookButton" runat="server">
+                    <i class="fa fad fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </header><!-- ================= HEADER END ================= -->
 
     <aside>
 
@@ -75,9 +88,5 @@
     <footer>
 
     </footer>
-    
-    <!-- SCRIPTS -->
-    <script src="Scripts/jquery-3.0.0.js"></script>
-    <script src="Scripts/bootstrap.bundle.js"></script>
 </body>
 </html>
