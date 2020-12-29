@@ -48,14 +48,39 @@
                 <li>
                     <a href="#">My Lists</a>
                 </li>
-                <li>
+                <li style="position:relative">
                     <a href="#">
                         Browse
                         <i class="fa fa-xs fa-angle-down"></i>
 
-                        <div class="browse-dropdown">
+                        <div class="browse-dropdown" style="width:300px; height:300px; position:absolute; top:57px; background-color: lightblue;">
                             <div class="browse-lists">
-                            <asp:ContentPlaceHolder ID="BrowseListsContentPlaceholder" runat="server"></asp:ContentPlaceHolder>
+                                <asp:SqlDataSource ID="BrowseListsSDS" runat="server"
+                                    ConnectionString="<%$ ConnectionStrings:ReadingDBConnectionString %>"
+                                    SelectCommand="SELECT TOP(5) ReadingList.ReadingListName, COUNT(ReadingListAffiliations.FK_BookID) AS BookCount
+                                        FROM ReadingList
+                                        INNER JOIN ReadingListAffiliations ON ReadingList.ReadingListID = ReadingListAffiliations.FK_ReadingListID
+                                        GROUP BY ReadingList.ReadingListName
+                                        ORDER BY BookCount DESC">
+                                </asp:SqlDataSource>
+                                <ul>
+                                    <li>
+                                        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+                                    </li>
+                                    <li>
+                                        <asp:Literal ID="Literal2" runat="server"></asp:Literal>
+                                    </li>
+                                    <li>
+                                        <asp:Literal ID="Literal3" runat="server"></asp:Literal>
+                                    </li>
+                                    <li>
+                                        <asp:Literal ID="Literal4" runat="server"></asp:Literal>
+                                    </li>
+                                    <li>
+                                        <asp:Literal ID="Literal5" runat="server"></asp:Literal>
+                                    </li>
+                                </ul>
+                                <asp:ContentPlaceHolder ID="BrowseListsContentPlaceholder" runat="server"></asp:ContentPlaceHolder>
                             </div>
                             <div class="browse-genres">
                                 <asp:ContentPlaceHolder ID="BrowseGenresContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
