@@ -44,5 +44,5 @@
 
         // toggle the nav
         navUL.toggle();
-    })
+    });
 });
