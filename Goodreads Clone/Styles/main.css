@@ -159,6 +159,10 @@ nav form #resetSearchButton {
     color: blue;
 }
 
+nav form #resetSearchButton:hover {
+    cursor: pointer;
+}
+
 nav form #resetSearchButton:focus {
     outline: none;
     
@@ -202,7 +206,7 @@ nav ul li a:hover {
 }
 
 /*
-    Search Bar
+    Search Form
 */
 .book-search-form {
     display: flex;
