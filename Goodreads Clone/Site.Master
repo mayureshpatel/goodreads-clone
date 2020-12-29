@@ -48,45 +48,69 @@
                 <li>
                     <a href="#">My Lists</a>
                 </li>
-                <li style="position:relative">
-                    <a href="#">
+                <li class="browse-list-item">
+                    <p id="BrowseButton">
                         Browse
                         <i class="fa fa-xs fa-angle-down"></i>
-
-                        <div class="browse-dropdown" style="width:300px; height:300px; position:absolute; top:57px; background-color: lightblue;">
-                            <div class="browse-lists">
-                                <asp:SqlDataSource ID="BrowseListsSDS" runat="server"
-                                    ConnectionString="<%$ ConnectionStrings:ReadingDBConnectionString %>"
-                                    SelectCommand="SELECT TOP(5) ReadingList.ReadingListName, COUNT(ReadingListAffiliations.FK_BookID) AS BookCount
-                                        FROM ReadingList
-                                        INNER JOIN ReadingListAffiliations ON ReadingList.ReadingListID = ReadingListAffiliations.FK_ReadingListID
-                                        GROUP BY ReadingList.ReadingListName
-                                        ORDER BY BookCount DESC">
-                                </asp:SqlDataSource>
-                                <ul>
-                                    <li>
-                                        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-                                    </li>
-                                    <li>
-                                        <asp:Literal ID="Literal2" runat="server"></asp:Literal>
-                                    </li>
-                                    <li>
-                                        <asp:Literal ID="Literal3" runat="server"></asp:Literal>
-                                    </li>
-                                    <li>
-                                        <asp:Literal ID="Literal4" runat="server"></asp:Literal>
-                                    </li>
-                                    <li>
-                                        <asp:Literal ID="Literal5" runat="server"></asp:Literal>
-                                    </li>
-                                </ul>
-                                <asp:ContentPlaceHolder ID="BrowseListsContentPlaceholder" runat="server"></asp:ContentPlaceHolder>
-                            </div>
-                            <div class="browse-genres">
-                                <asp:ContentPlaceHolder ID="BrowseGenresContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
-                            </div>
+                    </p>
+                    <div class="browse-dropdown" id="BrowseDropDown">
+                        <div class="browse-lists">
+                            <asp:SqlDataSource ID="BrowseListsSDS" runat="server"
+                                ConnectionString="<%$ ConnectionStrings:ReadingDBConnectionString %>"
+                                SelectCommand="SELECT TOP(5) ReadingList.ReadingListName, COUNT(ReadingListAffiliations.FK_BookID) AS BookCount
+                                    FROM ReadingList
+                                    INNER JOIN ReadingListAffiliations ON ReadingList.ReadingListID = ReadingListAffiliations.FK_ReadingListID
+                                    GROUP BY ReadingList.ReadingListName
+                                    ORDER BY BookCount DESC">
+                            </asp:SqlDataSource>
+                            <p>Top Lists</p>
+                            <ul>
+                                <li>
+                                    <a href='#'>hello</a>
+                                </li>
+                                <li>
+                                    <a href='#'>hello</a>
+                                </li>
+                                <li>
+                                    <a href='#'>hello</a>
+                                </li>
+                                <li>
+                                    <a href='#'>hello</a>
+                                </li>
+                                <li>
+                                    <a href='#'>hello</a>
+                                </li>
+                            </ul>
                         </div>
-                    </a>
+                        <div class="browse-genres">
+                            <asp:SqlDataSource ID="BrowseGenresSDS" runat="server"
+                                ConnectionString="<%$ ConnectionStrings:ReadingDBConnectionString %>"
+                                SelectCommand="SELECT Genre.GenreName, COUNT(GenreAffiliations.FK_BookID) AS BookCount
+                                    FROM Genre
+                                    INNER JOIN GenreAffiliations ON Genre.GenreID = GenreAffiliations.FK_GenreID
+                                    GROUP BY Genre.GenreName HAVING (NOT (Genre.GenreName = 'Non Fiction')) AND (NOT (Genre.GenreName = 'Fiction'))
+                                    ORDER BY BookCount DESC">
+                            </asp:SqlDataSource>
+                            <p>Top Genres</p>
+                            <ul>
+                                <li>
+                                    <a href='#'>hello</a>
+                                </li>
+                                <li>
+                                    <a href='#'>hello</a>
+                                </li>
+                                <li>
+                                    <a href='#'>hello</a>
+                                </li>
+                                <li>
+                                    <a href='#'>hello</a>
+                                </li>
+                                <li>
+                                    <a href='#'>hello</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </li>
                 <li>
                     <a href="#">Add Book</a>

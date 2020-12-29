@@ -2,6 +2,8 @@
     var navSearchForm = $("#nav-search-form");
     var navUL = $("#nav-ul");
     var cancelButton = $("#resetSearchButton");
+    var browseButton = $("#BrowseButton");
+    var browseDropDown = $("#BrowseDropDown");
 
     // When the search button is clicked, toggle the search bar only if the document width is 576px or less
     $("#searchBookButton").click(function () {
@@ -15,7 +17,7 @@
             navUL.toggle();
 
             // change the values of the logo to the gotten value
-            var displayOutput = navSearchForm.css("display")
+            var displayOutput = navSearchForm.css("display");
 
             // change the display value to flex if it is block
             if (displayOutput.localeCompare("block") == 0) {
@@ -44,5 +46,19 @@
 
         // toggle the nav
         navUL.toggle();
+    });
+
+    // When the browse button is clicked, toggle the browse dropdown menu
+    $(browseButton).click(function () {
+        // toggle the browse drop down
+        browseDropDown.toggle();
+
+        // change the values of the logo to the gotten value
+        var displayOutput = browseDropDown.css("display");
+
+        // change the display value to flex if it is block
+        if (displayOutput.localeCompare("block") == 0) {
+            browseDropDown.css({ "display": "grid" });
+        }
     });
 });

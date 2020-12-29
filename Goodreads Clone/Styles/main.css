@@ -49,7 +49,6 @@ header {
     height: 60px;
     background-color: #f4f1ea;
 
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
@@ -183,6 +182,65 @@ nav ul li {
     height: 100%;
 }
 
+nav ul li.browse-list-item {
+    position: relative;
+}
+
+nav ul li .browse-dropdown {
+    display: none;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+        "lists genres";
+
+    width: 350px;
+    height: 280px;
+    background-color: lightblue;
+
+    position: absolute;
+    top: 57px;
+    left: -135%;
+}
+
+nav ul li .browse-dropdown p {
+    padding: 5px 5px 5px 5px;
+    margin: 0px;
+
+    height: 10%;
+
+    text-align: center;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+nav ul li .browse-dropdown ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 90%;
+}
+
+nav ul li .browse-dropdown ul li {
+    width: 85%;
+    height: 35px;
+
+    margin-bottom: 10px;
+}
+
+nav ul li .browse-dropdown .browse-lists {
+    grid-area: lists;
+
+    background-color: lightsteelblue;
+}
+
+nav ul li .browse-dropdown .browse-genres {
+    grid-area: genres;
+
+    background-color: lightcoral;
+}
+
 nav ul li a {
     display: flex;
     align-items: center;
@@ -196,7 +254,21 @@ nav ul li a {
     color: #382110;
 }
 
-nav ul li a i {
+nav ul li p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    padding: 0px 10px;
+    margin: 0px;
+    
+    font-size: 18px;
+    text-decoration: none;
+    color: #382110;
+}
+
+nav ul li p i {
     padding: 0px 3px;
 }
 
@@ -205,6 +277,12 @@ nav ul li a:hover {
     color: white;
 }
 
+nav ul li p:hover {
+    background-color: #382110;
+    color: white;
+
+    cursor: pointer;
+}
 /*
     Search Form
 */
