@@ -24,13 +24,22 @@ namespace Goodreads_Clone
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
 
         /// <summary>
-        /// hiddenSearchTextBox control.
+        /// HiddenSearchTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText hiddenSearchTextBox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText HiddenSearchTextBox;
+
+        /// <summary>
+        /// ResetSearchButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton ResetSearchButton;
 
         /// <summary>
         /// BrowseListsSDS control.
@@ -42,6 +51,51 @@ namespace Goodreads_Clone
         protected global::System.Web.UI.WebControls.SqlDataSource BrowseListsSDS;
 
         /// <summary>
+        /// BrowseListItem01 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BrowseListItem01;
+
+        /// <summary>
+        /// BrowseListItem02 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BrowseListItem02;
+
+        /// <summary>
+        /// BrowseListItem03 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BrowseListItem03;
+
+        /// <summary>
+        /// BrowseListItem04 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BrowseListItem04;
+
+        /// <summary>
+        /// BrowseListItem05 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BrowseListItem05;
+
+        /// <summary>
         /// BrowseGenresSDS control.
         /// </summary>
         /// <remarks>
@@ -49,6 +103,51 @@ namespace Goodreads_Clone
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource BrowseGenresSDS;
+
+        /// <summary>
+        /// BrowseGenreItem01 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BrowseGenreItem01;
+
+        /// <summary>
+        /// BrowseGenreItem02 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BrowseGenreItem02;
+
+        /// <summary>
+        /// BrowseGenreItem03 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BrowseGenreItem03;
+
+        /// <summary>
+        /// BrowseGenreItem04 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BrowseGenreItem04;
+
+        /// <summary>
+        /// BrowseGenreItem05 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor BrowseGenreItem05;
 
         /// <summary>
         /// searchTextBox control.

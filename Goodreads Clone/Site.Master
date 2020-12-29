@@ -38,8 +38,8 @@
         
         <nav>
             <form id="nav-search-form">
-                <input type="text" name="searchTextBox" id="hiddenSearchTextBox" runat="server" placeholder="Search Books" />
-                <button type="reset" name="resetSearchButton" id="resetSearchButton">cancel</button>
+                <input type="text" name="searchTextBox" id="HiddenSearchTextBox" runat="server" placeholder="Search Books" />
+                <button type="reset" name="resetSearchButton" id="ResetSearchButton" runat="server">cancel</button>
             </form>
             <ul id="nav-ul">
                 <li>
@@ -56,57 +56,47 @@
                     <div class="browse-dropdown" id="BrowseDropDown">
                         <div class="browse-lists">
                             <asp:SqlDataSource ID="BrowseListsSDS" runat="server"
-                                ConnectionString="<%$ ConnectionStrings:ReadingDBConnectionString %>"
-                                SelectCommand="SELECT TOP(5) ReadingList.ReadingListName, COUNT(ReadingListAffiliations.FK_BookID) AS BookCount
-                                    FROM ReadingList
-                                    INNER JOIN ReadingListAffiliations ON ReadingList.ReadingListID = ReadingListAffiliations.FK_ReadingListID
-                                    GROUP BY ReadingList.ReadingListName
-                                    ORDER BY BookCount DESC">
+                                ConnectionString="<%$ ConnectionStrings:ReadingDBConnectionString %>">
                             </asp:SqlDataSource>
                             <p>Top Lists</p>
                             <ul>
                                 <li>
-                                    <a href='#'>hello</a>
+                                    <a id="BrowseListItem01" runat="server" href='#'></a>
                                 </li>
                                 <li>
-                                    <a href='#'>hello</a>
+                                    <a id="BrowseListItem02" runat="server" href='#'></a>
                                 </li>
                                 <li>
-                                    <a href='#'>hello</a>
+                                    <a id="BrowseListItem03" runat="server" href='#'></a>
                                 </li>
                                 <li>
-                                    <a href='#'>hello</a>
+                                    <a id="BrowseListItem04" runat="server" href='#'></a>
                                 </li>
                                 <li>
-                                    <a href='#'>hello</a>
+                                    <a id="BrowseListItem05" runat="server" href='#'></a>
                                 </li>
                             </ul>
                         </div>
                         <div class="browse-genres">
                             <asp:SqlDataSource ID="BrowseGenresSDS" runat="server"
-                                ConnectionString="<%$ ConnectionStrings:ReadingDBConnectionString %>"
-                                SelectCommand="SELECT Genre.GenreName, COUNT(GenreAffiliations.FK_BookID) AS BookCount
-                                    FROM Genre
-                                    INNER JOIN GenreAffiliations ON Genre.GenreID = GenreAffiliations.FK_GenreID
-                                    GROUP BY Genre.GenreName HAVING (NOT (Genre.GenreName = 'Non Fiction')) AND (NOT (Genre.GenreName = 'Fiction'))
-                                    ORDER BY BookCount DESC">
+                                ConnectionString="<%$ ConnectionStrings:ReadingDBConnectionString %>">
                             </asp:SqlDataSource>
                             <p>Top Genres</p>
                             <ul>
                                 <li>
-                                    <a href='#'>hello</a>
+                                    <a id="BrowseGenreItem01" runat="server" href='#'>hello</a>
                                 </li>
                                 <li>
-                                    <a href='#'>hello</a>
+                                    <a id="BrowseGenreItem02" runat="server" href='#'>hello</a>
                                 </li>
                                 <li>
-                                    <a href='#'>hello</a>
+                                    <a id="BrowseGenreItem03" runat="server" href='#'>hello</a>
                                 </li>
                                 <li>
-                                    <a href='#'>hello</a>
+                                    <a id="BrowseGenreItem04" runat="server" href='#'>hello</a>
                                 </li>
                                 <li>
-                                    <a href='#'>hello</a>
+                                    <a id="BrowseGenreItem05" runat="server" href='#'>hello</a>
                                 </li>
                             </ul>
                         </div>
