@@ -52,15 +52,22 @@
                     <a href="#">
                         Browse
                         <i class="fa fa-xs fa-angle-down"></i>
+
+                        <div class="browse-dropdown">
+                            <div class="browse-lists">
+                            <asp:ContentPlaceHolder ID="BrowseListsContentPlaceholder" runat="server"></asp:ContentPlaceHolder>
+                            </div>
+                            <div class="browse-genres">
+                                <asp:ContentPlaceHolder ID="BrowseGenresContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+                            </div>
+                        </div>
                     </a>
                 </li>
                 <li>
                     <a href="#">Add Book</a>
                 </li>
             </ul>
-
-
-        </nav><!-- ================= NAV END ================= -->
+        </nav>
 
         <form class="book-search-form">
             <div class="book-search-bar">
@@ -69,7 +76,7 @@
                     <i class="fa fad fa-search"></i>
                 </button>
             </div>
-        </form>
+        </form><!-- ================= NAV END ================= -->
     </header><!-- ================= HEADER END ================= -->
 
     <aside>
