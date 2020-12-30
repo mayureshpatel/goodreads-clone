@@ -15,13 +15,13 @@ namespace Goodreads_Clone
     {
 
         /// <summary>
-        /// head control.
+        /// PageHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder PageHead;
 
         /// <summary>
         /// HiddenSearchTextBox control.
@@ -168,21 +168,21 @@ namespace Goodreads_Clone
         protected global::System.Web.UI.HtmlControls.HtmlButton searchBookButton;
 
         /// <summary>
-        /// form1 control.
+        /// MainContentHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContentHeader;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// MainContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
     }
 }

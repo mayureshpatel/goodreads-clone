@@ -11,20 +11,20 @@
 <!-- HEAD -->
 <head runat="server">
     <title>Goodreads Clone</title>
-    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="PageHead" runat="server"></asp:ContentPlaceHolder>
 
     <meta name="author" content="Mayuresh Patel" />
     <meta name="description" content="This is a reading management system that functions like Goodreads.com but has my own look and feel" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
 
-    <link href="Styles/reset.css" rel="stylesheet" />
-    <link href="Styles/main.css" rel="stylesheet" />
-    <link href="Styles/all.css" rel="stylesheet" />
+    <link href="/Styles/reset.css" rel="stylesheet" />
+    <link href="/Styles/main.css" rel="stylesheet" />
+    <link href="/Styles/all.css" rel="stylesheet" />
 
-    <script src="Scripts/jquery-3.5.1.js"></script>
-    <script src="Scripts/popper.js"></script>
-    <script src="Scripts/master-main.js"></script>
+    <script src="/Scripts/jquery-3.5.1.js"></script>
+    <script src="/Scripts/popper.js"></script>
+    <script src="/Scripts/master-main.js"></script>
 </head>
 
 <!-- ================= BODY START ================= -->
@@ -33,7 +33,7 @@
     <header>
         <!-- ================= NAV START ================= -->
         <div class="logo">
-            <a href="default.aspx">goodreads</a>
+            <a href="/default.aspx">goodreads</a>
         </div>
         
         <nav>
@@ -46,7 +46,7 @@
                     <a href="/default.aspx">Home</a>
                 </li>
                 <li>
-                    <a href="#">My Lists</a>
+                    <a href="/Pages/reading-lists.aspx">My Lists</a>
                 </li>
                 <li class="browse-list-item">
                     <p id="BrowseButton">
@@ -61,19 +61,19 @@
                             <p>Top Lists</p>
                             <ul>
                                 <li>
-                                    <a id="BrowseListItem01" runat="server" href='#'></a>
+                                    <a id="BrowseListItem01" runat="server" href="/Pages/reading-lists.aspx"></a>
                                 </li>
                                 <li>
-                                    <a id="BrowseListItem02" runat="server" href='#'></a>
+                                    <a id="BrowseListItem02" runat="server" href="/Pages/reading-lists.aspx"></a>
                                 </li>
                                 <li>
-                                    <a id="BrowseListItem03" runat="server" href='#'></a>
+                                    <a id="BrowseListItem03" runat="server" href="/Pages/reading-lists.aspx"></a>
                                 </li>
                                 <li>
-                                    <a id="BrowseListItem04" runat="server" href='#'></a>
+                                    <a id="BrowseListItem04" runat="server" href="/Pages/reading-lists.aspx"></a>
                                 </li>
                                 <li>
-                                    <a id="BrowseListItem05" runat="server" href='#'></a>
+                                    <a id="BrowseListItem05" runat="server" href="/Pages/reading-lists.aspx"></a>
                                 </li>
                             </ul>
                         </div>
@@ -103,7 +103,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#">Add Book</a>
+                    <a href="/Pages/admin/add-book.aspx">Add Book</a>
                 </li>
             </ul>
         </nav>
@@ -118,21 +118,28 @@
         </form><!-- ================= NAV END ================= -->
     </header><!-- ================= HEADER END ================= -->
 
+    <!-- ================= ASIDE START ================= --> 
     <aside>
 
-    </aside>
+    </aside><!-- ================= ASIDE END ================= -->
 
+    <!-- ================= MAIN START ================= -->
     <main>
-        <form id="form1" runat="server">
-            <div>
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
-            </div>
-        </form>
-    </main>
+        <asp:ContentPlaceHolder ID="MainContentHeader" runat="server"></asp:ContentPlaceHolder>
+        
+        <div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </main><!-- ================= MAIN END ================= -->
 
+    <!-- ================= FOOTER START ================= -->
     <footer>
-
-    </footer>
+        <p>
+            <span id="footer-copy">Copyright &copy;</span>
+            <span id="footer-year"></span>
+            <span id="footer-author">Mayuresh Patel</span>
+        </p>
+    </footer><!-- ================= FOOTER END ================= -->
 </body>
 </html>

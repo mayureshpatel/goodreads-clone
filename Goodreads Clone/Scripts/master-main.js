@@ -90,4 +90,15 @@
             browseDropDown.slideToggle(150);
         }
     });
+
+    // Set the current year in the footer span
+    setCopyrightYear();
 });
+
+// Function to get the current year to display in the copyright section
+function setCopyrightYear() {
+    var currentDate = new Date();
+    var currentYear = currentDate.getFullYear();
+
+    document.getElementById("footer-year").innerHTML = currentYear;
+}
