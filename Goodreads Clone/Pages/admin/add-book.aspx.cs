@@ -58,6 +58,12 @@ namespace Goodreads_Clone.Pages.admin
                         addGenresList.Add(genresList[i]);
                     }
                 }
+
+                // If the add author list has authors in it, then add those authors to the database
+                if(addAuthorsList.Count > 0)
+                {
+                    InsertNewAuthors(addAuthorsList);
+                }
             }
             else
             {
@@ -338,6 +344,40 @@ namespace Goodreads_Clone.Pages.admin
 
             // Return the boolean flag
             return isInDB;
+        }
+
+        /**
+         * Inserts the given authors into the Authors table
+         * @param newAuthorsList the list of new authors to add
+         */
+        protected void InsertNewAuthors(List<String> newAuthorsList)
+        {
+            // Construct the insert command
+            String authorInsertCommand = "INSERT INTO Author (AuthorName) Values (@authorName)";
+
+            // Insert each author in the list into the Authors table
+            foreach(String authorName in newAuthorsList)
+            {
+                // Initialize the sql connection
+                using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+                {
+                    // Initialize the sql command
+                    using (SqlCommand myCommand = new SqlCommand(authorInsertCommand, myConnection))
+                    {
+                        // Add the parameters
+                        myCommand.Parameters.AddWithValue("authorName", authorName);
+
+                        // Open the connection
+                        myConnection.Open();
+
+                        // Execute the command
+                        myCommand.ExecuteNonQuery();
+
+                        // Close the connection
+                        myConnection.Close();
+                    }
+                }
+            }
         }
     }
 }
