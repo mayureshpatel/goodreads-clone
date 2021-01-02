@@ -672,5 +672,42 @@ namespace Goodreads_Clone.Pages.admin
             // Return the genreID
             return genreID;
         }
+
+        /**
+         * Gets the authorID of an author name in the Author table
+         * @param authorName the author whose id is being retrieved
+         * @return authorID the id of the author, 0 if not found
+         */
+        protected int GetAuthorID(String authorName)
+        {
+            // Construct the select command
+            String selectAuthorIDCommand = "SELECT AuthorID FROM Author WHERE AuthorName = @authorName";
+
+            // Initialze the authorID to be 0 (which is not possible in the Author table)
+            int authorID = 0;
+
+            // Initialize the sql connection
+            using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+            {
+                // Initialize the sql command
+                using (SqlCommand myCommand = new SqlCommand(selectAuthorIDCommand, myConnection))
+                {
+                    // Set up the parameters
+                    myCommand.Parameters.AddWithValue("authorName", authorName);
+
+                    // Open the connection
+                    myConnection.Open();
+
+                    // Execute the query
+                    authorID = (int)myCommand.ExecuteScalar();
+
+                    // Close the connection
+                    myConnection.Close();
+                }
+            }
+
+            // Return the authorID
+            return authorID;
+        }
     }
 }
