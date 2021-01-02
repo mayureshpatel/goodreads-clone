@@ -23,12 +23,12 @@ body {
     margin: 0 auto;
 
     grid-template-rows: 60px 1fr 45px;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 1fr;
 
     grid-template-areas:
-        "header header header"
-        "aside main main"
-        "footer footer footer";
+        "header"
+        "body-content"
+        "footer";
 
     min-height: 100vh;
 
@@ -51,6 +51,20 @@ header {
     background-color: #f4f1ea;
 
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.body-content {
+    grid-area: body-content;
+
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 200px 1fr;
+    grid-template-areas:
+        "aside main";
+
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
 }
 
 main {

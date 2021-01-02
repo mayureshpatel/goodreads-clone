@@ -118,23 +118,25 @@
         </form><!-- ================= NAV END ================= -->
     </header><!-- ================= HEADER END ================= -->
 
-    <!-- ================= ASIDE START ================= --> 
-    <aside>
+    <div class="body-content">
+        <!-- ================= ASIDE START ================= --> 
+        <aside>
 
-    </aside><!-- ================= ASIDE END ================= -->
+        </aside><!-- ================= ASIDE END ================= -->
 
-    <!-- ================= MAIN START ================= -->
-    <main>
-        <div class="main-header">
-            <asp:ContentPlaceHolder ID="MainContentHeader" runat="server"></asp:ContentPlaceHolder>
-        </div>
+        <!-- ================= MAIN START ================= -->
+        <main>
+            <div class="main-header">
+                <asp:ContentPlaceHolder ID="MainContentHeader" runat="server"></asp:ContentPlaceHolder>
+            </div>
         
-        <div class="main-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
-        </div>
+            <div class="main-content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            </div>
         
-    </main><!-- ================= MAIN END ================= -->
-
+        </main><!-- ================= MAIN END ================= -->
+    </div>
+    
     <!-- ================= FOOTER START ================= -->
     <footer>
         <p>
