@@ -48,6 +48,16 @@ namespace Goodreads_Clone.Pages.admin
                         addAuthorsList.Add(authorsList[i]);
                     }
                 }
+
+                // Populate the addGenresList by chekcing if the genre already exists in the database,
+                // if it doesn't exist, then add that genre to the list
+                for(int i = 0; i < genresList.Length; i++)
+                {
+                    if(!IsInGenreTable(genresList[i]))
+                    {
+                        addGenresList.Add(genresList[i]);
+                    }
+                }
             }
             else
             {
@@ -246,7 +256,8 @@ namespace Goodreads_Clone.Pages.admin
 
         /**
          * Checks if the given author is in the Author table
-         * @param author the author name
+         * @param authorName the author name
+         * @return true if the author is in the Authors table otherwise, false
          */
         protected bool IsInAuthorTable(String authorName)
         {
@@ -276,6 +287,49 @@ namespace Goodreads_Clone.Pages.admin
 
                     // Set the boolean flag to true if the author was found in the table
                     if(resultAuthor != null)
+                    {
+                        isInDB = true;
+                    }
+                }
+            }
+
+            // Return the boolean flag
+            return isInDB;
+        }
+
+        /**
+         * Checks if the given genre is in the Genres table
+         * @param genreName the name of the genre
+         * @return true if the genre is in the Genres table otherwise, false
+         */
+        protected bool IsInGenreTable(String genreName)
+        {
+            // Construct the select command
+            String genreSelectCommand = "SELECT GenreName FROM Genre WHERE GenreName = @genreName";
+
+            // Construct a boolean flag that keeps track of whether the genre is in the table or not
+            bool isInDB = false;
+
+            // Initialize the sql connection
+            using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+            {
+                // Initialize the sql command
+                using (SqlCommand myCommand = new SqlCommand(genreSelectCommand, myConnection))
+                {
+                    // Add the select parameters
+                    myCommand.Parameters.AddWithValue("genreName", genreName);
+
+                    // Open the connection
+                    myConnection.Open();
+
+                    // Execute the command
+                    String resultGenre = (String)myCommand.ExecuteScalar();
+
+                    // Close the connection
+                    myConnection.Close();
+
+                    // Set the isInDB boolean flag to true if found in the table
+                    if(resultGenre != null)
                     {
                         isInDB = true;
                     }
