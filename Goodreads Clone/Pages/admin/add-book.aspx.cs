@@ -602,7 +602,7 @@ namespace Goodreads_Clone.Pages.admin
         /**
          * Gets the bookID of a book given the book's ISBN
          * @param bookISBN the ISBN of the book
-         * @return bookID the id value of the book in the Book table
+         * @return bookID the id value of the book in the Book table, 0 if not found
          */
         protected int GetBookID(String bookISBN)
         {
@@ -634,6 +634,43 @@ namespace Goodreads_Clone.Pages.admin
 
             // Return the bookID
             return bookID;
+        }
+
+        /**
+         * Gets the genreID of a genre name in the Genre table
+         * @param genreName the genre whose id is being retrieved
+         * @return genreID the id of the genre, 0 if not found
+         */
+        protected int GetGenreID(String genreName)
+        {
+            // Construct the select command
+            String selectGenreIDCommand = "SELECT GenreID FROM Genre WHERE GenreName = @genreName";
+
+            // Initialize the genreID to be 0 (which is not possible in the Genre table)
+            int genreID = 0;
+
+            // Initialize the sql connection
+            using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+            {
+                // Initialize the sql command
+                using (SqlCommand myCommand = new SqlCommand(selectGenreIDCommand, myConnection))
+                {
+                    // Set up the parameters
+                    myCommand.Parameters.AddWithValue("genreName", genreName);
+
+                    // Open the connection
+                    myConnection.Open();
+
+                    // Execute the query
+                    genreID = (int)myCommand.ExecuteScalar();
+
+                    // Close the connection
+                    myConnection.Close();
+                }
+            }
+
+            // Return the genreID
+            return genreID;
         }
     }
 }
