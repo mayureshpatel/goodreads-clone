@@ -42,7 +42,7 @@ header {
     grid-template-rows: 1fr;
     grid-template-columns: 250px 2fr 1fr;
     grid-template-areas: "logo nav search-bar";
-    z-index: 999;
+    z-index: 99;
 
     position: fixed;
 
@@ -181,6 +181,7 @@ nav ul li p {
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
         "lists genres";
+    z-index: 100;
 
     width: 350px;
     height: 280px;
@@ -238,13 +239,15 @@ nav ul li p {
 .browse-lists {
     grid-area: lists;
 
+    background-color: #fefefe;
+
     border-right: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .browse-genres {
     grid-area: genres;
 
-    background-color: #aaaaaa;
+    background-color: #cdcdcd;
 
     border-left: 1px solid rgba(0, 0, 0, 0.5);
 }

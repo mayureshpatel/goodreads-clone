@@ -38,8 +38,23 @@
     max-width: 125px;
     padding: 5px;
     margin: 0 auto;
+    background-color: #f4f1ea;
+
+    border: 1px solid #380110;
+    border-radius: 6px 6px;
 
     font-size: 16px;
+    color: #380110;
+}
+
+.form-item input[type="submit"]:hover {
+    background-color: #380110;
+
+    border: 1px solid #ffffff;
+
+    color: #ffffff;
+
+    cursor: pointer;
 }
 
 /*
