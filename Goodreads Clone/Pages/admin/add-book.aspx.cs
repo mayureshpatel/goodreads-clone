@@ -599,9 +599,41 @@ namespace Goodreads_Clone.Pages.admin
             }
         }
 
+        /**
+         * Gets the bookID of a book given the book's ISBN
+         * @param bookISBN the ISBN of the book
+         * @return bookID the id value of the book in the Book table
+         */
         protected int GetBookID(String bookISBN)
         {
+            // Construct the select command
+            String selectBookIDCommand = "SELECT BookID FROM Book WHERE BookISBN = @bookISBN";
 
+            // Initialize the bookID to be 0 (which is not possible in the Book table)
+            int bookID = 0;
+
+            // Initialize the sql connection
+            using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+            {
+                // Initialize the sql command
+                using (SqlCommand myCommand = new SqlCommand(selectBookIDCommand, myConnection))
+                {
+                    // Set up the parameters
+                    myCommand.Parameters.AddWithValue("bookISBN", bookISBN);
+
+                    // Open the connection
+                    myConnection.Open();
+
+                    // Execute the query
+                    bookID = (int)myCommand.ExecuteScalar();
+
+                    // Close the connection
+                    myConnection.Close();
+                }
+            }
+
+            // Return the bookID
+            return bookID;
         }
     }
 }
