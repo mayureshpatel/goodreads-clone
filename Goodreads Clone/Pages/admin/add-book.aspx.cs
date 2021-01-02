@@ -70,6 +70,12 @@ namespace Goodreads_Clone.Pages.admin
                 {
                     InsertNewGenres(addGenresList);
                 }
+
+                // Add the book to the book table if it is not already in there
+                if(!IsInBookTable(bookISBNTextBox.Text))
+                {
+                    InsertNewBook(authorsList, genresList);
+                }
             }
             else
             {
@@ -418,6 +424,49 @@ namespace Goodreads_Clone.Pages.admin
                     }
                 }
             }
+        }
+
+        /**
+         * Checks if a given book in in the Book table of the database
+         * @param bookISBN the book ISBN to check
+         * @return true if the book is in the table, otherwise false
+         */
+        protected void IsInBookTable(String bookISBN)
+        {
+            // The select statement
+            String selectBookCommand = "SELECT BookISBN FROM Book WHERE BookISBN = @bookISBN";
+
+            // Boolean flag to know if the book is in the table
+            bool isInDB = false;
+
+            // Initialize the sql connection
+            using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+            {
+                // Initialize the sql command
+                using (SqlCommand myCommand = new SqlCommand(selectBookCommand, myConnection))
+                {
+                    // Add the parameters
+                    myCommand.Parameters.AddWithValue("bookISBN", bookISBN);
+
+                    // Open the connection
+                    myConnection.Open();
+
+                    // Execute the command
+                    String resultISBN = (String)myCommand.ExecuteScalar();
+
+                    // Close the connection
+                    myConnection.Close();
+
+                    // Set the boolean flag to true if the resultISBN is not null
+                    if(resultISBN != null)
+                    {
+                        isInDB = true;
+                    }
+                }
+            }
+
+            // Return the isInDB boolean flag
+            return isInDB;
         }
     }
 }
