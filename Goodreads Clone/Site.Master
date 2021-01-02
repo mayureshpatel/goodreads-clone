@@ -125,12 +125,14 @@
 
     <!-- ================= MAIN START ================= -->
     <main>
-        <asp:ContentPlaceHolder ID="MainContentHeader" runat="server"></asp:ContentPlaceHolder>
-        
-        <div>
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+        <div class="main-header">
+            <asp:ContentPlaceHolder ID="MainContentHeader" runat="server"></asp:ContentPlaceHolder>
         </div>
+        
+        <div class="main-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </div>
+        
     </main><!-- ================= MAIN END ================= -->
 
     <!-- ================= FOOTER START ================= -->

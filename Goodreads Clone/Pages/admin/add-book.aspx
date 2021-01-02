@@ -16,7 +16,7 @@
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <!-- FORM TO ADD A NEW BOOK -->
     <form class="add-book-form" runat="server">
-        <div class="form-section">
+        <div class="form-section book-isbn-page-section">
             <div class="form-item">
                 <asp:Label ID="bookNameLabel" runat="server" AssociatedControlID="bookNameTextBox" Text="Name:"></asp:Label>
                 <asp:TextBox ID="bookNameTextBox" runat="server"></asp:TextBox>
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="form-section">
+        <div class="form-section author-genre-section">
             <div class="form-item">
                 <asp:Label ID="bookAuthorsLabel" runat="server" AssociatedControlID="bookAuthorsTextBox" Text="Author(s):"></asp:Label>
                 <asp:TextBox ID="bookAuthorsTextBox" runat="server" placeholder="Comma Separated Names"></asp:TextBox>
@@ -46,14 +46,14 @@
             
         </div>
 
-        <div class="form-section">
+        <div class="form-section summary-section">
             <div class="form-item">
                 <asp:Label ID="bookSummaryLabel" runat="server" AssociatedControlID="bookSummaryTextBox" Text="Summary:"></asp:Label>
-                <asp:TextBox ID="bookSummaryTextBox" runat="server" TextMode="MultiLine" Columns="85" Rows="10" placeholder="Max 2,000 Characters"></asp:TextBox>
+                <asp:TextBox ID="bookSummaryTextBox" runat="server" TextMode="MultiLine" Rows="10" placeholder="Max 2,000 Characters"></asp:TextBox>
             </div>
         </div>
 
-        <div class="form-section">
+        <div class="form-section submit-section">
             <div class="form-item">
                 <asp:Button ID="newBookSubmitButton" runat="server" Text="Add New Book" />
             </div>
