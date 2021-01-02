@@ -431,7 +431,7 @@ namespace Goodreads_Clone.Pages.admin
          * @param bookISBN the book ISBN to check
          * @return true if the book is in the table, otherwise false
          */
-        protected void IsInBookTable(String bookISBN)
+        protected bool IsInBookTable(String bookISBN)
         {
             // The select statement
             String selectBookCommand = "SELECT BookISBN FROM Book WHERE BookISBN = @bookISBN";
