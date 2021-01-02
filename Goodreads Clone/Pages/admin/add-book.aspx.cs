@@ -64,6 +64,12 @@ namespace Goodreads_Clone.Pages.admin
                 {
                     InsertNewAuthors(addAuthorsList);
                 }
+
+                // If the add genre list has genres in it, then add those genres to the database
+                if(addGenresList.Count > 0)
+                {
+                    InsertNewGenres(addGenresList);
+                }
             }
             else
             {
@@ -366,6 +372,40 @@ namespace Goodreads_Clone.Pages.admin
                     {
                         // Add the parameters
                         myCommand.Parameters.AddWithValue("authorName", authorName);
+
+                        // Open the connection
+                        myConnection.Open();
+
+                        // Execute the command
+                        myCommand.ExecuteNonQuery();
+
+                        // Close the connection
+                        myConnection.Close();
+                    }
+                }
+            }
+        }
+
+        /**
+         * Inserts the given genres into the Genres table
+         * @param newGenresList the list of new genres to add
+         */
+        protected void InsertNewGenres(List<String> newGenresList)
+        {
+            // Construct the insert command
+            String genreInsertCommand = "INSERT INTO Genre (GenreName) Values (@genreName)";
+
+            // Loop through each genre in the newGenresList
+            foreach(String genreName in newGenresList)
+            {
+                // Initialize the sql connection
+                using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+                {
+                    // Initialize the sql command
+                    using (SqlCommand myCommand = new SqlCommand(genreInsertCommand, myConnection))
+                    {
+                        // Add the parameters
+                        myCommand.Parameters.AddWithValue("genreName", genreName);
 
                         // Open the connection
                         myConnection.Open();
