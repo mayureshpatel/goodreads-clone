@@ -292,7 +292,7 @@ namespace Goodreads_Clone.Pages.admin
                 using (SqlCommand myCommand = new SqlCommand(authorSelectCommand, myConnection))
                 {
                     // Add the parameters
-                    myCommand.Parameters.AddWithValue("authorName", author);
+                    myCommand.Parameters.AddWithValue("authorName", authorName);
 
                     // Open the connection
                     myConnection.Open();
