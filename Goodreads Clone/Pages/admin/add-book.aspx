@@ -20,7 +20,7 @@
             <div class="form-item">
                 <div class="form-item-label">
                     <asp:Label ID="bookNameLabel" runat="server" AssociatedControlID="bookNameTextBox" Text="Name:"></asp:Label>
-                    <asp:Literal ID="bookNameLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                    <asp:Literal ID="bookNameLiteral" runat="server"></asp:Literal>
                 </div>
                 <asp:TextBox ID="bookNameTextBox" runat="server"></asp:TextBox>
             </div>
@@ -28,7 +28,7 @@
             <div class="form-item">
                 <div class="form-item-label">
                     <asp:Label ID="bookISBNLabel" runat="server" AssociatedControlID="bookISBNTextBox" Text="ISBN:"></asp:Label>
-                    <asp:Literal ID="bookISBNLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                    <asp:Literal ID="bookISBNLiteral" runat="server"></asp:Literal>
                 </div>
                 <asp:TextBox ID="bookISBNTextBox" runat="server" placeholder="ISBN-13"></asp:TextBox>
             </div>
@@ -36,7 +36,7 @@
             <div class="form-item">
                 <div class="form-item-label">
                     <asp:Label ID="bookPageCountLabel" runat="server" AssociatedControlID="bookPageCountTextBox" Text="Page Count:"></asp:Label>
-                    <asp:Literal ID="bookPageCountLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                    <asp:Literal ID="bookPageCountLiteral" runat="server"></asp:Literal>
                 </div>
                 <asp:TextBox ID="bookPageCountTextBox" runat="server" TextMode="Number"></asp:TextBox>
             </div>
@@ -46,7 +46,7 @@
             <div class="form-item">
                 <div class="form-item-label">
                     <asp:Label ID="bookAuthorsLabel" runat="server" AssociatedControlID="bookAuthorsTextBox" Text="Author(s):"></asp:Label>
-                    <asp:Literal ID="bookAuthorsLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                    <asp:Literal ID="bookAuthorsLiteral" runat="server"></asp:Literal>
                 </div>
                 <asp:TextBox ID="bookAuthorsTextBox" runat="server" placeholder="Comma Separated Names"></asp:TextBox>
             </div>
@@ -54,7 +54,7 @@
             <div class="form-item">
                 <div class="form-item-label">
                     <asp:Label ID="bookGenresLabel" runat="server" AssociatedControlID="bookGenresTextBox" Text="Genre(s):"></asp:Label>
-                    <asp:Literal ID="bookGenresLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                    <asp:Literal ID="bookGenresLiteral" runat="server"></asp:Literal>
                 </div>
                 <asp:TextBox ID="bookGenresTextBox" runat="server" placeholder="Comma Separated Genres"></asp:TextBox>
             </div>
@@ -64,7 +64,7 @@
             <div class="form-item">
                 <div class="form-item-label">
                     <asp:Label ID="bookSummaryLabel" runat="server" AssociatedControlID="bookSummaryTextBox" Text="Summary:"></asp:Label>
-                    <asp:Literal ID="bookSummaryLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                    <asp:Literal ID="bookSummaryLiteral" runat="server"></asp:Literal>
                 </div>
                 <asp:TextBox ID="bookSummaryTextBox" runat="server" TextMode="MultiLine" Rows="10" placeholder="Max 2,000 Characters" MaxLength="1000"></asp:TextBox>
             </div>

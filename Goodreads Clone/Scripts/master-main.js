@@ -100,3 +100,4 @@ function setCopyrightYear() {
 
     document.getElementById("footer-year").innerHTML = currentYear;
 }
+
