@@ -196,6 +196,11 @@ namespace Goodreads_Clone.Pages.admin
             bookSummaryTextBox.Style.Remove("border");
         }
 
+        /**
+         * Generates a list of strings form the input using the split method
+         * @param input the input string
+         * @return inputList an array of strings that represent the input values
+         */
         protected String[] GenerateInputList(String input)
         {
             // Split the text input by commas
