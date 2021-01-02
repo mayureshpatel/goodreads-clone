@@ -30,7 +30,11 @@ namespace Goodreads_Clone.Pages.admin
             // try to insert the data into the database
             if(ValidateInput())
             {
-
+                
+            }
+            else
+            {
+                newBookSubmitButton.Text = "woah there!";
             }
         }
 
@@ -44,6 +48,9 @@ namespace Goodreads_Clone.Pages.admin
             // Set the Text values of all literals to empty strings
             SetErrorLiteralText("");
 
+            // Set the borders for all input boxes back to none
+            InitInputBorders();
+
             // Flag to test if the input is valid (cannot be set back to true)
             bool validFlag = true;
 
@@ -54,7 +61,7 @@ namespace Goodreads_Clone.Pages.admin
                 bookNameLiteral.Text = "<small class='error-small'>cannot be blank</small>";
 
                 // Add a css class to the textbox that will change the border to red
-
+                bookNameTextBox.Style.Add("border", "1px solid red");
 
                 // Set the valid flag to false
                 validFlag = false;
@@ -62,7 +69,7 @@ namespace Goodreads_Clone.Pages.admin
             else
             {
                 // Add a css class to the textbox that will change the border to green
-
+                bookNameTextBox.Style.Add("border", "1px solid green");
             }
 
             // Validates the book isbn input (must be a 13 digit number)
@@ -73,6 +80,7 @@ namespace Goodreads_Clone.Pages.admin
                 bookISBNLiteral.Text = "<small class='error-small'>must be a 13 digit number</small>";
 
                 // Add a css class to the textbox that will change the border to red
+                bookISBNTextBox.Style.Add("border", "1px solid red");
 
                 // Set the valid flag to false
                 validFlag = false;
@@ -80,7 +88,7 @@ namespace Goodreads_Clone.Pages.admin
             else
             {
                 // Add a css class to the textbox that will change the border to green
-
+                bookISBNTextBox.Style.Add("border", "1px solid green");
             }
 
             // Validates the page count input (cannot be blank)
@@ -90,6 +98,7 @@ namespace Goodreads_Clone.Pages.admin
                 bookPageCountLiteral.Text = "<small class='error-small'>cannot be blank</small>";
 
                 // Add a css class to the textbox that will change the border to red
+                bookPageCountTextBox.Style.Add("border", "1px solid red");
 
                 // Set the valid flag to false
                 validFlag = false;
@@ -97,7 +106,7 @@ namespace Goodreads_Clone.Pages.admin
             else
             {
                 // Add a css class to the textbox that will change the border to green
-
+                bookPageCountTextBox.Style.Add("border", "1px solid green");
             }
 
             // Validates the authors name input (cannot be blank and must be comma separated)
@@ -107,6 +116,7 @@ namespace Goodreads_Clone.Pages.admin
                 bookAuthorsLiteral.Text = "<small class='error-small'>cannot be blank</small>";
 
                 // Add a css class to the textbox that will change the border to green
+                bookAuthorsTextBox.Style.Add("border", "1px solid red");
 
                 // Set the valid flag to false
                 validFlag = false;
@@ -114,7 +124,7 @@ namespace Goodreads_Clone.Pages.admin
             else
             {
                 // Add a css class to the textbox that will change the border to green
-
+                bookAuthorsTextBox.Style.Add("border", "1px solid green");
             }
 
             // Validates the genre names input (cannot be blank and must be comma separated)
@@ -124,6 +134,7 @@ namespace Goodreads_Clone.Pages.admin
                 bookGenresLiteral.Text = "<small class='error-small'>cannot be blank</small>";
 
                 // Add a css class to the textbox that will change the border to red
+                bookGenresTextBox.Style.Add("border", "1px solid red");
 
                 // Set the valid flag to false
                 validFlag = false;
@@ -131,7 +142,7 @@ namespace Goodreads_Clone.Pages.admin
             else
             {
                 // Add a css class to the textbox that will change the border to green
-
+                bookGenresTextBox.Style.Add("border", "1px solid green");
             }
 
             // Validates the book summary input (cannot be blank)
@@ -141,6 +152,7 @@ namespace Goodreads_Clone.Pages.admin
                 bookSummaryLiteral.Text = "<small class='error-small'>cannot be blank</small>";
 
                 // Add a css class to the textbox that will change the border to red
+                bookSummaryTextBox.Style.Add("border", "1px solid red");
 
                 // Set the valid flag to false
                 validFlag = false;
@@ -148,6 +160,7 @@ namespace Goodreads_Clone.Pages.admin
             else
             {
                 // Add a css class to the textbox that will change the border to green
+                bookSummaryTextBox.Style.Add("border", "1px solid green");
             }
 
             // Return the valid flag's value
@@ -166,6 +179,19 @@ namespace Goodreads_Clone.Pages.admin
             bookAuthorsLiteral.Text = text;
             bookGenresLiteral.Text = text;
             bookSummaryLiteral.Text = text;
+        }
+
+        /**
+         * Resets the border property for all the input boxes
+         */
+        protected void InitInputBorders()
+        {
+            bookNameTextBox.Style.Remove("border");
+            bookISBNTextBox.Style.Remove("border");
+            bookPageCountTextBox.Style.Remove("border");
+            bookAuthorsTextBox.Style.Remove("border");
+            bookGenresTextBox.Style.Remove("border");
+            bookSummaryTextBox.Style.Remove("border");
         }
     }
 }
