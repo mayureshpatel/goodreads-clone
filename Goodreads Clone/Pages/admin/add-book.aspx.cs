@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 
 namespace Goodreads_Clone.Pages.admin
 {
@@ -33,6 +34,20 @@ namespace Goodreads_Clone.Pages.admin
                 // Get the authors and genres input string and process them
                 String[] authorsList = GenerateInputList(bookAuthorsTextBox.Text);
                 String[] genresList = GenerateInputList(bookGenresTextBox.Text);
+
+                // Lists to hold authors and geners that need to be added to the database
+                List<String> addAuthorsList = new List<String>();
+                List<String> addGenresList = new List<String>();
+
+                // Populate the addAuthorsList by checking if the author already exists in the database,
+                // if it doesn't exist, then add that author to the list
+                for(int i = 0; i < authorsList.Length; i++)
+                {
+                    if(!IsInAuthorTable(authorsList[i]))
+                    {
+                        addAuthorsList.Add(authorsList[i]);
+                    }
+                }
             }
             else
             {
@@ -227,6 +242,48 @@ namespace Goodreads_Clone.Pages.admin
 
             // Return an array of string after processing the strings
             return inputList;
+        }
+
+        /**
+         * Checks if the given author is in the Author table
+         * @param author the author name
+         */
+        protected bool IsInAuthorTable(String authorName)
+        {
+            // Construct the select command
+            String authorSelectCommand = "SELECT AuthorName FROM Author WHERE AuthorName = @authorName";
+
+            // Boolean flag to keep track whether the author was found in the table
+            bool isInDB = false;
+
+            // Initialize the sql connection
+            using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+            {
+                // Initialize the sql command
+                using (SqlCommand myCommand = new SqlCommand(authorSelectCommand, myConnection))
+                {
+                    // Add the parameters
+                    myCommand.Parameters.AddWithValue("authorName", author);
+
+                    // Open the connection
+                    myConnection.Open();
+
+                    // Execute the command
+                    String resultAuthor = (String)myCommand.ExecuteScalar();
+
+                    // Close the connection
+                    myConnection.Close();
+
+                    // Set the boolean flag to true if the author was found in the table
+                    if(resultAuthor != null)
+                    {
+                        isInDB = true;
+                    }
+                }
+            }
+
+            // Return the boolean flag
+            return isInDB;
         }
     }
 }
