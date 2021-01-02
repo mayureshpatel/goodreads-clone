@@ -524,5 +524,84 @@ namespace Goodreads_Clone.Pages.admin
                 }
             }
         }
+
+        /**
+         * Inserts the author affiliations for the given book
+         * @param authorList the authors of the book
+         * @param bookID the book
+         */
+        protected void InsertAuthorAffils(String[] authorsList, int bookID)
+        {
+            // Loop through each author in the authorList
+            foreach (String authorName in authorsList)
+            {
+                // Construct the insert command
+                String insertAuthorAffilsCommand = "INSERT INTO AuthorAffiliations (FK_BookID, FK_AuthorID)" +
+                    " VALUES (@bookID, @authorID)";
+
+                // Initialize the sql connection
+                using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+                {
+                    // Initialize the sql command
+                    using (SqlCommand myCommand = new SqlCommand(insertAuthorAffilsCommand, myConnection))
+                    {
+                        // Set up the insert parameters
+                        myCommand.Parameters.AddWithValue("bookID", bookID);
+                        myCommand.Parameters.AddWithValue("authorID", GetAuthorID(authorName));
+
+                        // Open the connection
+                        myConnection.Open();
+
+                        // Execute the command
+                        int rowsAffected = myCommand.ExecuteNonQuery();
+
+                        // Close the connection
+                        myConnection.Close();
+                    }
+                }
+            }
+        }
+
+        /**
+         * Inserts the genre affiliations for the given book
+         * @param genreList the genres of the book
+         * @param bookID the book
+         */
+        protected void InsertGenreAffils(String[] genresList, int bookID)
+        {
+            // Loop through all of the genres in the list
+            foreach (String genreName in genresList)
+            {
+                // Construct the insert command
+                String insertGenreAffilsCommand = "INSERT INTO GenreAffiliations (FK_BookID, FK_GenreID)" +
+                    " VALUES (@bookID, @genreID)";
+
+                // Initialize the sql connection
+                using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+                {
+                    // Initialize the sql command
+                    using (SqlCommand myCommand = new SqlCommand(insertGenreAffilsCommand, myConnection))
+                    {
+                        // Set up the insert parameters
+                        myCommand.Parameters.AddWithValue("bookID", bookID);
+                        myCommand.Parameters.AddWithValue("genreID", GetGenreID(genreName));
+
+                        // Open the connection
+                        myConnection.Open();
+
+                        // Execute the command
+                        int rowsAffected = myCommand.ExecuteNonQuery();
+
+                        // Close the connection
+                        myConnection.Close();
+                    }
+                }
+            }
+        }
+
+        protected int GetBookID(String bookISBN)
+        {
+
+        }
     }
 }
