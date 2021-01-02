@@ -62,7 +62,7 @@ header {
     grid-template-areas:
         "aside main";
 
-    width: 80%;
+    width: 70%;
     height: 100%;
     margin: 0 auto;
 }
@@ -428,7 +428,10 @@ MEDIA QUERIES
 =================================================================
 */
 @media screen and (max-width: 1200px) {
+    .body-content {
+        width: 85%;
     }
+}
 
 @media screen and (max-width: 1024px) {
     /*
@@ -436,9 +439,17 @@ MEDIA QUERIES
     */
     body {
         grid-template-areas:
-            "header header header"
-            "main main main"
-            "footer footer footer";
+            "header"
+            "body-content"
+            "footer";
+    }
+
+    .body-content {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "main main";
+
+        width: 100%;
     }
 }
 
@@ -448,6 +459,12 @@ MEDIA QUERIES
     */
     body {
         grid-template-rows: 120px 1fr 45px;
+    }
+
+    .body-content {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "main main";
     }
 
     header {
