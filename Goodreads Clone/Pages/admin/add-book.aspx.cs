@@ -30,7 +30,9 @@ namespace Goodreads_Clone.Pages.admin
             // try to insert the data into the database
             if(ValidateInput())
             {
-                
+                // Get the authors and genres input string and process them
+                String[] authorsList = GenerateInputList(bookAuthorsTextBox.Text);
+                String[] genresList = GenerateInputList(bookGenresTextBox.Text);
             }
             else
             {
@@ -192,6 +194,34 @@ namespace Goodreads_Clone.Pages.admin
             bookAuthorsTextBox.Style.Remove("border");
             bookGenresTextBox.Style.Remove("border");
             bookSummaryTextBox.Style.Remove("border");
+        }
+
+        protected String[] GenerateInputList(String input)
+        {
+            // Split the text input by commas
+            String[] inputList = input.Split(',');
+
+            // Process each element in the list
+            for(int i = 0; i < inputList.Length; i++)
+            {
+                // Trim the leading and trailing whitespace
+                inputList[i] = inputList[i].Trim();
+
+                // Split the elements contents by spaces
+                String[] inputListSplit = inputList[i].Split();
+
+                // Capitalize each word in the input
+                for(int j = 0; j < inputListSplit.Length; j++)
+                {
+                    inputListSplit[j] = inputListSplit[j].Trim().ToLower().Substring(0, 1).ToUpper() + inputListSplit[j].Trim().ToLower().Substring(1);
+                }
+
+                // Join the list back into one string
+                inputList[i] = String.Join(" ", inputListSplit);
+            }
+
+            // Return an array of string after processing the strings
+            return inputList;
         }
     }
 }
