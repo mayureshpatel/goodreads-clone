@@ -468,5 +468,61 @@ namespace Goodreads_Clone.Pages.admin
             // Return the isInDB boolean flag
             return isInDB;
         }
+
+        /**
+         * Inserts a new book into the Book table
+         * @param authorsList the authors of the book
+         * @param genresList the genres of the book
+         */
+        protected void InsertNewBook(String[] authorsList, String[] genresList)
+        {
+            // Insert into the Book table first
+            InsertBook();
+
+            // Insert the author and genre affiliations
+            InsertAuthorAffils(authorsList, GetBookID(bookISBNTextBox.Text));
+            InsertGenreAffils(genresList, GetBookID(bookISBNTextBox.Text));
+
+            // Reset all form fields
+            bookNameTextBox.Text = "";
+            bookISBNTextBox.Text = "";
+            bookPageCountTextBox.Text = "";
+            bookAuthorsTextBox.Text = "";
+            bookGenresTextBox.Text = "";
+            bookSummaryTextBox.Text = "";
+        }
+
+        /**
+         * Insert a book into the Book table taking the parameters form the form input values
+         */
+        protected void InsertBook()
+        {
+            // Construct the insert command
+            String insertBookCommand = "INSERT INTO Book (BookISBN, BookName, BookSummary, BookPageCount)" +
+                " VALUES (@bookISBN, @bookName, @bookSummary, @bookPageCount)";
+
+            // Initialize the sql connection
+            using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+            {
+                // Initialize the sql command
+                using (SqlCommand myCommand = new SqlCommand(insertBookCommand, myConnection))
+                {
+                    // Set up the insert parameters
+                    myCommand.Parameters.AddWithValue("bookISBN", bookISBNTextBox.Text);
+                    myCommand.Parameters.AddWithValue("bookName", bookNameTextBox.Text);
+                    myCommand.Parameters.AddWithValue("bookSummary", bookSummaryTextBox.Text);
+                    myCommand.Parameters.AddWithValue("bookPageCount", bookPageCountTextBox.Text);
+
+                    // Open the connection
+                    myConnection.Open();
+
+                    // Execute the command
+                    int rowsAffected = myCommand.ExecuteNonQuery();
+
+                    // Close the connection
+                    myConnection.Close();
+                }
+            }
+        }
     }
 }
