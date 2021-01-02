@@ -24,6 +24,15 @@ namespace Goodreads_Clone.Pages.admin
         protected global::System.Web.UI.WebControls.Label bookNameLabel;
 
         /// <summary>
+        /// bookNameLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal bookNameLiteral;
+
+        /// <summary>
         /// bookNameTextBox control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace Goodreads_Clone.Pages.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label bookISBNLabel;
+
+        /// <summary>
+        /// bookISBNLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal bookISBNLiteral;
 
         /// <summary>
         /// bookISBNTextBox control.
@@ -60,6 +78,15 @@ namespace Goodreads_Clone.Pages.admin
         protected global::System.Web.UI.WebControls.Label bookPageCountLabel;
 
         /// <summary>
+        /// bookPageCountLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal bookPageCountLiteral;
+
+        /// <summary>
         /// bookPageCountTextBox control.
         /// </summary>
         /// <remarks>
@@ -76,6 +103,15 @@ namespace Goodreads_Clone.Pages.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label bookAuthorsLabel;
+
+        /// <summary>
+        /// bookAuthorsLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal bookAuthorsLiteral;
 
         /// <summary>
         /// bookAuthorsTextBox control.
@@ -96,6 +132,15 @@ namespace Goodreads_Clone.Pages.admin
         protected global::System.Web.UI.WebControls.Label bookGenresLabel;
 
         /// <summary>
+        /// bookGenresLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal bookGenresLiteral;
+
+        /// <summary>
         /// bookGenresTextBox control.
         /// </summary>
         /// <remarks>
@@ -112,6 +157,15 @@ namespace Goodreads_Clone.Pages.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label bookSummaryLabel;
+
+        /// <summary>
+        /// bookSummaryLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal bookSummaryLiteral;
 
         /// <summary>
         /// bookSummaryTextBox control.

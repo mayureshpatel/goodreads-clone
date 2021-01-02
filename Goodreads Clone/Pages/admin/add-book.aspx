@@ -18,44 +18,61 @@
     <form class="add-book-form" runat="server">
         <div class="form-section book-isbn-page-section">
             <div class="form-item">
-                <asp:Label ID="bookNameLabel" runat="server" AssociatedControlID="bookNameTextBox" Text="Name:"></asp:Label>
+                <div class="form-item-label">
+                    <asp:Label ID="bookNameLabel" runat="server" AssociatedControlID="bookNameTextBox" Text="Name:"></asp:Label>
+                    <asp:Literal ID="bookNameLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                </div>
                 <asp:TextBox ID="bookNameTextBox" runat="server"></asp:TextBox>
             </div>
             
             <div class="form-item">
-                <asp:Label ID="bookISBNLabel" runat="server" AssociatedControlID="bookISBNTextBox" Text="ISBN:"></asp:Label>
+                <div class="form-item-label">
+                    <asp:Label ID="bookISBNLabel" runat="server" AssociatedControlID="bookISBNTextBox" Text="ISBN:"></asp:Label>
+                    <asp:Literal ID="bookISBNLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                </div>
                 <asp:TextBox ID="bookISBNTextBox" runat="server" placeholder="ISBN-13"></asp:TextBox>
             </div>
             
             <div class="form-item">
-                <asp:Label ID="bookPageCountLabel" runat="server" AssociatedControlID="bookPageCountTextBox" Text="Page Count:"></asp:Label>
+                <div class="form-item-label">
+                    <asp:Label ID="bookPageCountLabel" runat="server" AssociatedControlID="bookPageCountTextBox" Text="Page Count:"></asp:Label>
+                    <asp:Literal ID="bookPageCountLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                </div>
                 <asp:TextBox ID="bookPageCountTextBox" runat="server"></asp:TextBox>
             </div>
         </div>
 
         <div class="form-section author-genre-section">
             <div class="form-item">
-                <asp:Label ID="bookAuthorsLabel" runat="server" AssociatedControlID="bookAuthorsTextBox" Text="Author(s):"></asp:Label>
+                <div class="form-item-label">
+                    <asp:Label ID="bookAuthorsLabel" runat="server" AssociatedControlID="bookAuthorsTextBox" Text="Author(s):"></asp:Label>
+                    <asp:Literal ID="bookAuthorsLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                </div>
                 <asp:TextBox ID="bookAuthorsTextBox" runat="server" placeholder="Comma Separated Names"></asp:TextBox>
             </div>
             
             <div class="form-item">
-                <asp:Label ID="bookGenresLabel" runat="server" AssociatedControlID="bookGenresTextBox" Text="Genre(s):"></asp:Label>
+                <div class="form-item-label">
+                    <asp:Label ID="bookGenresLabel" runat="server" AssociatedControlID="bookGenresTextBox" Text="Genre(s):"></asp:Label>
+                    <asp:Literal ID="bookGenresLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                </div>
                 <asp:TextBox ID="bookGenresTextBox" runat="server" placeholder="Comma Separated Genres"></asp:TextBox>
             </div>
-            
         </div>
 
         <div class="form-section summary-section">
             <div class="form-item">
-                <asp:Label ID="bookSummaryLabel" runat="server" AssociatedControlID="bookSummaryTextBox" Text="Summary:"></asp:Label>
+                <div class="form-item-label">
+                    <asp:Label ID="bookSummaryLabel" runat="server" AssociatedControlID="bookSummaryTextBox" Text="Summary:"></asp:Label>
+                    <asp:Literal ID="bookSummaryLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
+                </div>
                 <asp:TextBox ID="bookSummaryTextBox" runat="server" TextMode="MultiLine" Rows="10" placeholder="Max 2,000 Characters"></asp:TextBox>
             </div>
         </div>
 
         <div class="form-section submit-section">
             <div class="form-item">
-                <asp:Button ID="newBookSubmitButton" runat="server" Text="Add New Book" />
+                <asp:Button ID="newBookSubmitButton" runat="server" Text="Add New Book" OnClick="newBookSubmitButton_Click" />
             </div>
         </div>
     </form>
