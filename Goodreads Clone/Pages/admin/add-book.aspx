@@ -38,7 +38,7 @@
                     <asp:Label ID="bookPageCountLabel" runat="server" AssociatedControlID="bookPageCountTextBox" Text="Page Count:"></asp:Label>
                     <asp:Literal ID="bookPageCountLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
                 </div>
-                <asp:TextBox ID="bookPageCountTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="bookPageCountTextBox" runat="server" TextMode="Number"></asp:TextBox>
             </div>
         </div>
 
@@ -66,7 +66,7 @@
                     <asp:Label ID="bookSummaryLabel" runat="server" AssociatedControlID="bookSummaryTextBox" Text="Summary:"></asp:Label>
                     <asp:Literal ID="bookSummaryLiteral" runat="server" Text="<small>You forgot this</small>"></asp:Literal>
                 </div>
-                <asp:TextBox ID="bookSummaryTextBox" runat="server" TextMode="MultiLine" Rows="10" placeholder="Max 2,000 Characters"></asp:TextBox>
+                <asp:TextBox ID="bookSummaryTextBox" runat="server" TextMode="MultiLine" Rows="10" placeholder="Max 2,000 Characters" MaxLength="1000"></asp:TextBox>
             </div>
         </div>
 

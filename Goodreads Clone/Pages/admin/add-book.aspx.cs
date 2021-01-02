@@ -38,7 +38,7 @@ namespace Goodreads_Clone.Pages.admin
          */
         protected bool ValidateInput()
         {
-            return false;
+            
         }
     }
 }
