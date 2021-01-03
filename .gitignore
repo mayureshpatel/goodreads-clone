@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Ignore the jQuery and Popper js files and directories
+Scripts/esm/
+Scripts/src/
+Scripts/umd/
