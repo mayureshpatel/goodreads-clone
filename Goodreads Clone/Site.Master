@@ -108,14 +108,14 @@
             </ul>
         </nav>
 
-        <form class="book-search-form">
+        <div class="book-search-form">
             <div class="book-search-bar">
                 <input type="text" name="searchTextBox" id="searchTextBox" runat="server" placeholder="Search Books" />
                 <button type="button" name="searchBookButton" id="searchBookButton" runat="server">
                     <i class="fa fad fa-search"></i>
                 </button>
             </div>
-        </form><!-- ================= NAV END ================= -->
+        </div><!-- ================= NAV END ================= -->
     </header><!-- ================= HEADER END ================= -->
 
     <div class="body-content">
@@ -131,9 +131,10 @@
             </div>
         
             <div class="main-content">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                <form id="form1" runat="server">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                </form>
             </div>
-        
         </main><!-- ================= MAIN END ================= -->
     </div>
     

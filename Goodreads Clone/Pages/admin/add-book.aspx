@@ -15,7 +15,7 @@
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <!-- FORM TO ADD A NEW BOOK -->
-    <form class="add-book-form" runat="server">
+    <div class="add-book-form">
         <div class="form-section book-isbn-page-section">
             <div class="form-item">
                 <div class="form-item-label">
@@ -75,5 +75,5 @@
                 <asp:Button ID="newBookSubmitButton" runat="server" Text="Add New Book" OnClick="newBookSubmitButton_Click" />
             </div>
         </div>
-    </form>
+    </div>
 </asp:Content>
