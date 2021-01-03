@@ -340,4 +340,4 @@ ASALocalRun/
 healthchecksdb
 
 # Ignore the jQuery and Popper js files and directories
-"Goodreads Clone"/Scripts/esm/jquery.*
+"Goodreads Clone"/Scripts/esm/jquery*.js
