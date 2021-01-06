@@ -91,6 +91,49 @@
 
     // Set the current year in the footer span
     setCopyrightYear();
+
+    // When a row in the table is clicked, popup a modal that will add a book into a list
+    $(".all-books-table tr").click(function () {
+        // First set a variable for the row that was clicked
+        let currentRow = $(this);
+
+        // If the row was not a header row, we want to grab the ISBN value of that row
+        if (this.children[0].tagName === "TD") {
+            // Get the selected rows ISBN value
+            let rowISBN = currentRow.find("td:eq(0)").text();
+            let rowTitle = currentRow.find("td:eq(1)").text();
+            let rowAuthors = currentRow.find("td:eq(2)").text();
+            let rowGenres = currentRow.find("td:eq(3)").text();
+
+            console.log(rowISBN);
+
+            // Set the text of the hidden p tag to the selected row isbn value
+            $("#MainContent_SelectedISBN").text(rowISBN);
+            $("#MainContent_SelectedTitle").text(rowTitle);
+            $("#MainContent_SelectedAuthors").text(rowAuthors);
+            $("#MainContent_SelectedGenres").text(rowGenres);
+
+
+            // Launch the modal after dimming the background
+            if ($(".modal").css("display").localeCompare("none") == 0) {
+                $("body").css("background-color", "rgba(0, 0, 0, 0.20)");
+                $(".modal").slideToggle(300);
+            }
+            else {
+                $("body").css("background-color", "rgb(255, 255, 255)");
+                $(".modal").slideToggle(300);
+            }
+        }
+        else {
+            $("#MainContent_SelectedISBN").text(0);
+        }
+    });
+
+    // When the close button on the modal is clicked, close the modal
+    $(".close-button").click(function () {
+        // slide toggle the modal
+        $(".modal").slideToggle(300);
+    });
 });
 
 // Function to get the current year to display in the copyright section

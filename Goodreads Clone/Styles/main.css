@@ -64,6 +64,8 @@ header {
 
     width: 100%;
     height: 100%;
+
+    background-color: green;
 }
 
 
@@ -401,6 +403,9 @@ main {
     padding: 0px 30px;
 }
 
+/*
+    Home Page: All Books Table
+*/
 .table-container {
     overflow-x: auto;
 
@@ -422,8 +427,157 @@ main {
     color: white;
 }
 
+.all-books-table th:hover {
+    cursor: default;
+}
+
 .all-books-table tr:hover {
+    cursor: pointer;
     background-color: #e4e4e4;
+}
+
+.all-books-table tr:first-child {
+    background-color: pink;
+}
+
+/*
+    Home Page: Modal Styling
+*/
+.modal {
+    display: none;
+    position: fixed;
+    top: 15%;
+    left: 20%;
+    z-index: 100;
+    overflow-y: auto;
+
+    width: 55%;
+    max-height: 70vh;
+    box-shadow: 0px 0px 4px black;
+    background-color: white;
+}
+
+.modal hr {
+    height: 1px;
+    background-color: black;
+    width: 90%;
+    border: none;
+    margin-right: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 15px 0px 15px;
+}
+
+.mh-label-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.mh-label-header h1 {
+    margin: 0px;
+}
+
+.modal-header input {
+    padding: 10px;
+    background-color: transparent;
+    width: 50px;
+
+    border: none;
+    border-radius: 30px;
+
+    font-size: 32px;
+}
+
+.modal-header input:focus {
+    outline: none;
+}
+
+.modal-header input:hover {
+    text-shadow: 0px 0px 1px black;
+    cursor: pointer;
+}
+
+.modal-content {
+    padding: 0px 15px;
+}
+
+.modal-content h5, .modal-content h3, .modal-content p {
+    margin: 0px;
+}
+
+.mc-book-meta {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    padding: 0px 0px 15px 0px;
+}
+
+.smc-isbn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.smc-pagecount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mc-author {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 15px 0px;
+}
+
+.mc-genre {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 15px 0px;
+}
+
+.mc-summary {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 15px 0px;
+}
+
+.modal-footer {
+    padding: 15px;
+}
+
+.mf-selectbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mf-selectbutton select {
+    border: 1px solid #777;
+    margin-right: 5px;
+    border-radius: 5px;
+    padding: 5px 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.mf-selectbutton input {
+    font-size: 16px;
+    border: 1px solid #777;
+    padding: 5px 5px;
+    cursor: pointer;
 }
 
 /*

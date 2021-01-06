@@ -11,10 +11,8 @@ namespace Goodreads_Clone
 {
     public partial class _default : System.Web.UI.Page
     {
-        // Instance variable to hold the connection string
+        // Instance Variables
         protected String myConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ReadingDBConnectionString"].ConnectionString;
-
-        // Instance variable to hold a DataSet
         protected DataSet modifiedDataSet = new DataSet();
 
         /**
@@ -23,7 +21,7 @@ namespace Goodreads_Clone
         protected void Page_Load(object sender, EventArgs e)
         {
             // Select command
-            String selectCommand = "SELECT Book.BookID, Book.BookISBN, Book.BookName, Author.AuthorName, Genre.GenreName" +
+            String selectCommand = "SELECT Book.BookISBN AS ISBN, Book.BookName AS Title, Author.AuthorName AS Authors, Genre.GenreName AS Genres" +
                 " FROM Author" +
                 " INNER JOIN AuthorAffiliations ON Author.AuthorID = AuthorAffiliations.FK_AuthorID" +
                 " INNER JOIN Book ON AuthorAffiliations.FK_BookID = Book.BookID" +
@@ -50,7 +48,7 @@ namespace Goodreads_Clone
                     setTableColumns(modifiedTable);
 
                     // Construct a string to hold all the new tables column names
-                    String[] columnNames = { "BookID", "BookISBN", "BookName", "Authors", "Genres" };
+                    String[] columnNames = { "ISBN", "Title", "Authors", "Genres" };
 
                     // First, loop through all of the tables in the DataTable object
                     foreach (DataTable table in originalData.Tables)
@@ -72,8 +70,8 @@ namespace Goodreads_Clone
                                 DataRow newRow = modifiedTable.NewRow();
 
                                 // Construct the string that holds the genre and author names
-                                String genresCollection = oldDataRows[oldDataRowsIndex]["GenreName"].ToString();
-                                String authorsCollection = oldDataRows[oldDataRowsIndex]["AuthorName"].ToString();
+                                String genresCollection = oldDataRows[oldDataRowsIndex]["Genres"].ToString();
+                                String authorsCollection = oldDataRows[oldDataRowsIndex]["Authors"].ToString();
 
                                 // Create the new row and add it to the new table
                                 createRow(modifiedTable, oldDataRows, columnNames, genresCollection, authorsCollection, oldDataRowsIndex, newDataRowsIndex);
@@ -86,30 +84,30 @@ namespace Goodreads_Clone
                             {
                                 // If the row at the i position in the original data set table has the same 'BookID' as the next row, we will start looping through all the books after
                                 // the current i position
-                                if (oldDataRows[oldDataRowsIndex]["BookID"].Equals(oldDataRows[oldDataRowsIndex + 1]["BookID"]))
+                                if (oldDataRows[oldDataRowsIndex]["ISBN"].Equals(oldDataRows[oldDataRowsIndex + 1]["ISBN"]))
                                 {
                                     // Construct strings to hold all of the genres and authors that describe the BookID at the current position in the original data set table
-                                    String genresCollection = oldDataRows[oldDataRowsIndex]["GenreName"].ToString();
-                                    String authorsCollection = oldDataRows[oldDataRowsIndex]["AuthorName"].ToString();
+                                    String genresCollection = oldDataRows[oldDataRowsIndex]["Genres"].ToString();
+                                    String authorsCollection = oldDataRows[oldDataRowsIndex]["Authors"].ToString();
 
                                     // For every row after the current i position 
                                     for (int j = oldDataRowsIndex + 1; j < oldDataRows.Count; j++)
                                     {
                                         // Check if the current i positions "BookID" is the same as the next position. This holds the i position constant while changing the j position
-                                        if (oldDataRows[oldDataRowsIndex]["BookID"].Equals(oldDataRows[j]["BookID"]))
+                                        if (oldDataRows[oldDataRowsIndex]["ISBN"].Equals(oldDataRows[j]["ISBN"]))
                                         {
                                             // Check if the genre string already has the genre in it. If not add it.
-                                            if (!genresCollection.Contains(oldDataRows[j]["GenreName"].ToString()))
+                                            if (!genresCollection.Contains(oldDataRows[j]["Genres"].ToString()))
                                             {
                                                 // If the two positions have the same book, then we want to concatenate the genre names that are in each row
-                                                genresCollection += ", " + oldDataRows[j]["GenreName"].ToString();
+                                                genresCollection += ", " + oldDataRows[j]["Genres"].ToString();
                                             }
 
                                             // Check if the author string already has the author in it. If not add it.
-                                            if (!authorsCollection.Contains(oldDataRows[j]["AuthorName"].ToString()))
+                                            if (!authorsCollection.Contains(oldDataRows[j]["Authors"].ToString()))
                                             {
                                                 // If the two positions have the same book, then we want to concatenate the author names that are in each row
-                                                authorsCollection += ", " + oldDataRows[j]["AuthorName"].ToString();
+                                                authorsCollection += ", " + oldDataRows[j]["Authors"].ToString();
                                             }
 
                                             // Change the i position (which points to the position of the original table) to the j position, effectively skipping all of the rows that were the same
@@ -132,10 +130,10 @@ namespace Goodreads_Clone
                                 else
                                 {
                                     // the string that holds the genre name
-                                    String genresCollection = oldDataRows[oldDataRowsIndex]["GenreName"].ToString();
+                                    String genresCollection = oldDataRows[oldDataRowsIndex]["Genres"].ToString();
 
                                     // the string that holds the author name
-                                    String authorsCollection = oldDataRows[oldDataRowsIndex]["AuthorName"].ToString();
+                                    String authorsCollection = oldDataRows[oldDataRowsIndex]["Authors"].ToString();
 
                                     // Add the new row
                                     createRow(modifiedTable, oldDataRows, columnNames, genresCollection, authorsCollection, oldDataRowsIndex, newDataRowsIndex);
@@ -163,14 +161,11 @@ namespace Goodreads_Clone
          */
         protected void setTableColumns(DataTable table)
         {
-            // Add a column for the book id. The column should be an int value, and the name should be "BookID"
-            table.Columns.Add(createColumn("System.Int32", "BookID", true, true));
-
             // Add a column for the book isbn. The column should be a string value, and the name should be "BookISBN"
-            table.Columns.Add(createColumn("System.String", "BookISBN", true, true));
+            table.Columns.Add(createColumn("System.String", "ISBN", true, true));
 
             // Add a column for the book name. The column should be a string value, and the name should be "BookName"
-            table.Columns.Add(createColumn("System.String", "BookName", true, false));
+            table.Columns.Add(createColumn("System.String", "Title", true, false));
 
             // Add a column for the genre names. The column should be a string value, and the name should be "Authors"
             table.Columns.Add(createColumn("System.String", "Authors", true, false));
@@ -216,15 +211,40 @@ namespace Goodreads_Clone
             DataRow newRow = table.NewRow();
 
             // Insert column values for each column in the DatatRow
-            newRow[columnNames[0]] = oldDataRows[getPosition][columnNames[0]];          // BookID
-            newRow[columnNames[1]] = oldDataRows[getPosition][columnNames[1]];          // BookISBN
-            newRow[columnNames[2]] = oldDataRows[getPosition][columnNames[2]];          // BookName
-            newRow[columnNames[3]] = authorsCollection;                                 // Authors
-            newRow[columnNames[4]] = genresCollection;                                  // Genres
+            newRow[columnNames[0]] = oldDataRows[getPosition][columnNames[0]];          // BookISBN
+            newRow[columnNames[1]] = oldDataRows[getPosition][columnNames[1]];          // BookName
+            newRow[columnNames[2]] = authorsCollection;                                 // Authors
+            newRow[columnNames[3]] = genresCollection;                                  // Genres
 
             // Insert the row at a given index in the table
             table.Rows.InsertAt(newRow, insertPosition);
 
+        }
+    
+        protected DataTable GetSelectedBook(String isbn)
+        {
+            DataTable myTable = new DataTable();
+
+            // Initilize the SqlConnection
+            using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+            {
+                String selectBookCommand = "SELECT BookSummary, BookPageCount FROM Book WHERE BookISBN = @bookISBN";
+                // Initialize the sql command
+                using (SqlCommand myCommand = new SqlCommand(selectBookCommand, myConnection))
+                {
+                    // Add the select parameters
+                    myCommand.Parameters.AddWithValue("bookISBN", isbn);
+
+                    // Open the connection
+                    myConnection.Open();
+
+                    // Execute the Command and get all the columns
+                    myTable.Load(myCommand.ExecuteReader());
+                }
+            }
+
+            // Go Through each value and add it to the list
+            return myTable;
         }
     }
 }
