@@ -19,11 +19,10 @@
     <meta charset="utf-8" />
 
     <link href="/Styles/reset.css" rel="stylesheet" />
-    <link href="/Styles/main.css" rel="stylesheet" />
     <link href="/Styles/all.css" rel="stylesheet" />
+    <link href="/Styles/main.css" rel="stylesheet" />
 
     <script src="/Scripts/jquery-3.5.1.js"></script>
-    <script src="/Scripts/popper.js"></script>
     <script src="/Scripts/master-main.js"></script>
 </head>
 
