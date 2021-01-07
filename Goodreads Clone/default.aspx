@@ -15,7 +15,9 @@
     <!-- Show all the books in the database -->
     <div class="table-container">
         <asp:GridView ID="allBooksGV" runat="server"
-            CssClass="all-books-table">
+            CssClass="all-books-table"
+            AllowPaging="true"
+            PageSize="25">
         </asp:GridView>
     </div>
 
