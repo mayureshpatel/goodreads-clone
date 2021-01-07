@@ -75,5 +75,11 @@
                 <asp:Button ID="newBookSubmitButton" runat="server" Text="Add New Book" OnClick="newBookSubmitButton_Click" />
             </div>
         </div>
+
+        <div class="form-section feeback-section">
+            <div class="form-item">
+                <asp:Literal ID="newBookFeedbackLiteral" runat="server"></asp:Literal>
+            </div>
+        </div>
     </div>
 </asp:Content>
