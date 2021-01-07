@@ -33,6 +33,9 @@ body {
         "footer";
 
     font-family: Montserrat, sans-serif;
+
+    /* Experimental */
+    background-color: green;
 }
 
 header {
@@ -192,7 +195,6 @@ nav ul li p {
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
         "lists genres";
-    z-index: 100;
 
     width: 350px;
     height: 280px;
@@ -426,7 +428,7 @@ main {
 }
 
 /* || Home Page: Modal Styling || */
-.modal {
+/*.modal {
     display: none;
     position: fixed;
     top: 15%;
@@ -566,7 +568,7 @@ main {
     font-size: 16px;
 
     cursor: pointer;
-}
+}*/
 
 /*
     =================================================================
