@@ -17,39 +17,37 @@
 
     =================================================================
 */
+/* || Main Grid || */
 body {
     display: grid;
+
     width: 100%;
     margin: 0 auto;
+    min-height: 100vh;
 
     grid-template-rows: 60px 1fr 45px;
     grid-template-columns: 1fr;
-
     grid-template-areas:
         "header"
         "body-content"
         "footer";
 
-    min-height: 100vh;
-
     font-family: Montserrat, sans-serif;
 }
 
 header {
-    grid-area: header;
-
     display: grid;
+    position: fixed;
+
+    grid-area: header;
     grid-template-rows: 1fr;
     grid-template-columns: 250px 2fr 1fr;
     grid-template-areas: "logo nav search-bar";
     z-index: 99;
 
-    position: fixed;
-
     width: 100%;
     height: 60px;
     background-color: #f4f1ea;
-
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
@@ -64,7 +62,6 @@ header {
 
     width: 100%;
     height: 100%;
-
     background-color: green;
 }
 
@@ -87,13 +84,7 @@ footer {
     background-color: #f4f1ea;
 }
 
-/*
-    =================================================================
-
-    HEADER GRID AREAS
-
-    =================================================================
-*/
+/* || Header Grid || */
 .logo {
     grid-area: logo;
 }
@@ -193,6 +184,10 @@ nav ul li p {
 
 .browse-dropdown {
     display: none;
+    position: absolute;
+    top: 60px;
+    left: -135%;
+
     grid-template-rows: 1fr;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
@@ -202,16 +197,11 @@ nav ul li p {
     width: 350px;
     height: 280px;
     box-shadow: 0px 0px 2px black;
-
-    position: absolute;
-    top: 60px;
-    left: -135%;
 }
 
 .browse-dropdown p {
     padding: 5px 5px 5px 5px;
     margin: 0px;
-
     height: 10%;
 
     text-align: center;
@@ -221,7 +211,9 @@ nav ul li p {
 
 .browse-dropdown p:hover {
     background-color: inherit;
+
     color: inherit;
+
     cursor: default;
 }
 
@@ -237,7 +229,6 @@ nav ul li p {
 .browse-dropdown ul li {
     width: 95%;
     height: 35px;
-
     margin-bottom: 10px;
 }
 
@@ -256,7 +247,6 @@ nav ul li p {
     grid-area: lists;
 
     background-color: #fefefe;
-
     border-right: 1px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -264,7 +254,6 @@ nav ul li p {
     grid-area: genres;
 
     background-color: #cdcdcd;
-
     border-left: 1px solid rgba(0, 0, 0, 0.5);
 }
 
@@ -279,6 +268,7 @@ nav ul li a:hover {
 
 nav ul li p:hover {
     background-color: #382110;
+
     color: white;
 
     cursor: pointer;
@@ -291,9 +281,8 @@ nav form {
     display: none;
     justify-content: center;
     align-items: center;
-    
     position: relative;
-
+    
     width: 85%;
 }
 
@@ -301,7 +290,6 @@ nav form {
     width: 100%;
     padding: 3px 0px 3px 5px;
     box-shadow: 0px 0px 1px black;
-
     border: none;
     
     font-size: 18px;
@@ -315,8 +303,8 @@ nav form {
 #ResetSearchButton {
     position: absolute;
     right: 5px;
-    background-color: white;
 
+    background-color: white;
     border: none;
 
     color: blue;
@@ -328,7 +316,6 @@ nav form {
 
 #ResetSearchButton:focus {
     outline: none;
-    
     border: 1px solid rgba(0, 0, 0, 0.25);
 }
 
@@ -350,7 +337,6 @@ nav form {
 .book-search-bar #searchTextBox {
     width: 100%;
     padding: 3px 0px 3px 5px;
-
     border: none;
     box-shadow: 0px 0px 1px black;
 
@@ -359,7 +345,6 @@ nav form {
 
 .book-search-bar #searchTextBox:focus {
     outline: none;
-
     box-shadow: 0px 0px 2px black;
 }
 
@@ -368,6 +353,7 @@ nav form {
     right: 0px;
     bottom: 5px;
     right: 10px;
+
     background-color: white;
     border: none;
     
@@ -403,13 +389,11 @@ main {
     padding: 0px 30px;
 }
 
-/*
-    Home Page: All Books Table
-*/
+/* || Home Page: All Books Table || */
 .table-container {
     overflow-x: auto;
-
 }
+
 .all-books-table {
     width: 100%;
 }
@@ -433,6 +417,7 @@ main {
 
 .all-books-table tr:hover {
     cursor: pointer;
+
     background-color: #e4e4e4;
 }
 
@@ -440,9 +425,7 @@ main {
     background-color: pink;
 }
 
-/*
-    Home Page: Modal Styling
-*/
+/* || Home Page: Modal Styling || */
 .modal {
     display: none;
     position: fixed;
@@ -459,10 +442,10 @@ main {
 
 .modal hr {
     height: 1px;
-    background-color: black;
     width: 90%;
-    border: none;
     margin-right: auto;
+    background-color: black;
+    border: none;
 }
 
 .modal-header {
@@ -499,6 +482,7 @@ main {
 
 .modal-header input:hover {
     text-shadow: 0px 0px 1px black;
+
     cursor: pointer;
 }
 
@@ -568,15 +552,19 @@ main {
     margin-right: 5px;
     border-radius: 5px;
     padding: 5px 5px;
-    font-size: 16px;
-    cursor: pointer;
     background-color: white;
+    
+    font-size: 16px;
+
+    cursor: pointer;
 }
 
 .mf-selectbutton input {
-    font-size: 16px;
     border: 1px solid #777;
     padding: 5px 5px;
+    
+    font-size: 16px;
+
     cursor: pointer;
 }
 
@@ -612,9 +600,7 @@ MEDIA QUERIES
 }
 
 @media screen and (max-width: 1024px) {
-    /*
-        Remove the side bar
-    */
+    /* || Remove the side bar || */
     body {
         grid-template-areas:
             "header"
@@ -630,9 +616,7 @@ MEDIA QUERIES
 }
 
 @media screen and (max-width: 900px) {
-    /*
-        Change the header grid
-    */
+    /* || Change the header grid || */
     body {
         grid-template-rows: 120px 1fr 45px;
     }
@@ -653,9 +637,7 @@ MEDIA QUERIES
         height: 120px;
     }
 
-    /*
-        Nav styling
-    */
+    /* || Nav styling || */
     nav {
         border-top: 1px solid rgba(0, 0, 0, 0.15);
         border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -671,9 +653,7 @@ MEDIA QUERIES
 }
 
 @media screen and (max-width: 576px) {
-    /*
-        Change Header Grid
-    */
+    /* || Change Header Grid || */
     header {
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 10fr;
@@ -682,9 +662,7 @@ MEDIA QUERIES
             "nav nav";
     }
 
-    /*
-        Search Bar
-    */
+    /* || Search Bar || */
 
     .book-search-bar {
         display: flex;
