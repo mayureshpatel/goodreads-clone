@@ -428,17 +428,16 @@ main {
 }
 
 /* || Home Page: Modal Styling || */
-/*.modal {
+.modal {
     display: none;
     position: fixed;
     top: 15%;
-    left: 20%;
-    z-index: 100;
+    left: 15%;
     overflow-y: auto;
 
-    width: 55%;
-    max-height: 70vh;
-    box-shadow: 0px 0px 4px black;
+    width: 70%;
+    max-height: 80vh;
+    box-shadow: 0px 0px 10px black;
     background-color: white;
 }
 
@@ -568,7 +567,7 @@ main {
     font-size: 16px;
 
     cursor: pointer;
-}*/
+}
 
 /*
     =================================================================

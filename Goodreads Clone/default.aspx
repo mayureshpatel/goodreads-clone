@@ -15,17 +15,15 @@
     <!-- Show all the books in the database -->
     <div class="table-container">
         <asp:GridView ID="allBooksGV" runat="server"
-            CssClass="all-books-table"
-            AllowPaging="true"
-            PageSize="25">
+            CssClass="all-books-table">
         </asp:GridView>
     </div>
 
     <!-- Hidden p tag to get the selected row ISBN value to use in the modal -->
-    <p id="SelectedISBN" runat="server">Here's some text</p>
-    <p id="SelectedTitle" runat="server"></p>
-    <p id="SelectedAuthors" runat="server"></p>
-    <p id="SelectedGenres" runat="server"></p>
+    <p id="SelectedISBN" visible="false" runat="server">Here's some text</p>
+    <p id="SelectedTitle" visible="false" runat="server"></p>
+    <p id="SelectedAuthors" visible="false" runat="server"></p>
+    <p id="SelectedGenres" visible="false" runat="server"></p>
 
     <!-- Modal for Adding a Book to a Reading List -->
     <div class="modal">
