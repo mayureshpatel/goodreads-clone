@@ -75,11 +75,16 @@ namespace Goodreads_Clone.Pages.admin
                 if(!IsInBookTable(bookISBNTextBox.Text))
                 {
                     InsertNewBook(authorsList, genresList);
+                    newBookFeedbackLiteral.Text = "<small class='success-small'>Successfully Added Book</small>";
+                }
+                else
+                {
+                    newBookFeedbackLiteral.Text = "<small class='error-small'>Book Already Exists</small>";
                 }
             }
             else
             {
-                newBookSubmitButton.Text = "woah there!";
+                newBookFeedbackLiteral.Text = "<small class='error-small'>Errors in Input</small>";
             }
         }
 
