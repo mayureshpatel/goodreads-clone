@@ -57,6 +57,14 @@
     cursor: pointer;
 }
 
+.submit-section {
+    margin: 20px 0px 0px 0px;
+}
+
+.feedback-section {
+    margin: 0px !important;
+}
+
 /*
 =================================================================
 

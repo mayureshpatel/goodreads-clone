@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        <div class="form-section feeback-section">
+        <div class="form-section feedback-section">
             <div class="form-item">
                 <asp:Literal ID="newBookFeedbackLiteral" runat="server"></asp:Literal>
             </div>
