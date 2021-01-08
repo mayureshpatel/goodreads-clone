@@ -24,49 +24,67 @@ namespace Goodreads_Clone
         protected global::System.Web.UI.WebControls.GridView allBooksGV;
 
         /// <summary>
-        /// SelectedISBN control.
+        /// SelectedBookID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SelectedISBN;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SelectedBookID;
 
         /// <summary>
-        /// SelectedTitle control.
+        /// modalBookTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SelectedTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalBookTitle;
 
         /// <summary>
-        /// SelectedAuthors control.
+        /// modalBookISBN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SelectedAuthors;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalBookISBN;
 
         /// <summary>
-        /// SelectedGenres control.
+        /// modalBookPageCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SelectedGenres;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalBookPageCount;
 
         /// <summary>
-        /// ModalSDS control.
+        /// modalBookAuthors control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ModalSDS;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalBookAuthors;
+
+        /// <summary>
+        /// modalBookGenres control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalBookGenres;
+
+        /// <summary>
+        /// modalBookSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modalBookSummary;
 
         /// <summary>
         /// readingListsSDS control.
@@ -85,5 +103,41 @@ namespace Goodreads_Clone
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList readingListsDDL;
+
+        /// <summary>
+        /// AddToListButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton AddToListButton;
+
+        /// <summary>
+        /// AddToListFeedbackLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal AddToListFeedbackLiteral;
+
+        /// <summary>
+        /// JustDoIt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl JustDoIt;
+
+        /// <summary>
+        /// JustDoItAgain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl JustDoItAgain;
     }
 }
