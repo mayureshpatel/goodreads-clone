@@ -60,19 +60,19 @@
                             <p>Top Lists</p>
                             <ul>
                                 <li>
-                                    <a id="BrowseListItem01" runat="server" href="/Pages/reading-lists.aspx"></a>
+                                    <a id="BrowseListItem01" runat="server" href="#"></a>
                                 </li>
                                 <li>
-                                    <a id="BrowseListItem02" runat="server" href="/Pages/reading-lists.aspx"></a>
+                                    <a id="BrowseListItem02" runat="server" href="#"></a>
                                 </li>
                                 <li>
-                                    <a id="BrowseListItem03" runat="server" href="/Pages/reading-lists.aspx"></a>
+                                    <a id="BrowseListItem03" runat="server" href="#"></a>
                                 </li>
                                 <li>
-                                    <a id="BrowseListItem04" runat="server" href="/Pages/reading-lists.aspx"></a>
+                                    <a id="BrowseListItem04" runat="server" href="#"></a>
                                 </li>
                                 <li>
-                                    <a id="BrowseListItem05" runat="server" href="/Pages/reading-lists.aspx"></a>
+                                    <a id="BrowseListItem05" runat="server" href="#"></a>
                                 </li>
                             </ul>
                         </div>
