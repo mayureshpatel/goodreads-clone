@@ -396,9 +396,6 @@ main {
     overflow-x: auto;
 }
 
-.all-books-table {
-}
-
 .all-books-table th, .all-books-table td {
     padding: 10px;
     min-width: 150px;
