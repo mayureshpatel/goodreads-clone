@@ -6,13 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Services;
 
 namespace Goodreads_Clone
 {
     public partial class _default : System.Web.UI.Page
     {
         // Instance Variables
-        protected String myConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ReadingDBConnectionString"].ConnectionString;
+        protected static String myConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ReadingDBConnectionString"].ConnectionString;
         protected DataSet modifiedDataSet = new DataSet();
 
         /**
@@ -21,7 +22,7 @@ namespace Goodreads_Clone
         protected void Page_Load(object sender, EventArgs e)
         {
             // Select command
-            String selectCommand = "SELECT Book.BookISBN AS ISBN, Book.BookName AS Title, Author.AuthorName AS Authors, Genre.GenreName AS Genres" +
+            String selectCommand = "SELECT Book.BookID AS ID, Book.BookISBN AS ISBN, Book.BookName AS Title, Author.AuthorName AS Authors, Genre.GenreName AS Genres, Book.BookSummary AS Summary, Book.BookPageCount AS PageCount" +
                 " FROM Author" +
                 " INNER JOIN AuthorAffiliations ON Author.AuthorID = AuthorAffiliations.FK_AuthorID" +
                 " INNER JOIN Book ON AuthorAffiliations.FK_BookID = Book.BookID" +
@@ -48,7 +49,7 @@ namespace Goodreads_Clone
                     setTableColumns(modifiedTable);
 
                     // Construct a string to hold all the new tables column names
-                    String[] columnNames = { "ISBN", "Title", "Authors", "Genres" };
+                    String[] columnNames = { "ID", "ISBN", "Title", "Authors", "Genres", "Summary", "PageCount" };
 
                     // First, loop through all of the tables in the DataTable object
                     foreach (DataTable table in originalData.Tables)
@@ -162,6 +163,9 @@ namespace Goodreads_Clone
         protected void setTableColumns(DataTable table)
         {
             // Add a column for the book isbn. The column should be a string value, and the name should be "BookISBN"
+            table.Columns.Add(createColumn("System.String", "ID", true, true));
+
+            // Add a column for the book isbn. The column should be a string value, and the name should be "BookISBN"
             table.Columns.Add(createColumn("System.String", "ISBN", true, true));
 
             // Add a column for the book name. The column should be a string value, and the name should be "BookName"
@@ -172,6 +176,12 @@ namespace Goodreads_Clone
 
             // Add a column for the genre names. The column should be a string value, and the name should be "Genres"
             table.Columns.Add(createColumn("System.String", "Genres", true, false));
+
+            // Add a column for the book isbn. The column should be a string value, and the name should be "BookISBN"
+            table.Columns.Add(createColumn("System.String", "Summary", true, false));
+
+            // Add a column for the book isbn. The column should be a string value, and the name should be "BookISBN"
+            table.Columns.Add(createColumn("System.Int32", "PageCount", true, false));
         }
 
         /**
@@ -211,40 +221,48 @@ namespace Goodreads_Clone
             DataRow newRow = table.NewRow();
 
             // Insert column values for each column in the DatatRow
-            newRow[columnNames[0]] = oldDataRows[getPosition][columnNames[0]];          // BookISBN
-            newRow[columnNames[1]] = oldDataRows[getPosition][columnNames[1]];          // BookName
-            newRow[columnNames[2]] = authorsCollection;                                 // Authors
-            newRow[columnNames[3]] = genresCollection;                                  // Genres
+            newRow[columnNames[0]] = oldDataRows[getPosition][columnNames[0]];          // BookID
+            newRow[columnNames[1]] = oldDataRows[getPosition][columnNames[1]];          // BookISBN
+            newRow[columnNames[2]] = oldDataRows[getPosition][columnNames[2]];          // BookName
+            newRow[columnNames[3]] = authorsCollection;                                 // Authors
+            newRow[columnNames[4]] = genresCollection;                                  // Genres
+            newRow[columnNames[5]] = oldDataRows[getPosition][columnNames[5]];          // BookSummary
+            newRow[columnNames[6]] = oldDataRows[getPosition][columnNames[6]];          // BookPageCount
 
             // Insert the row at a given index in the table
             table.Rows.InsertAt(newRow, insertPosition);
 
         }
-    
-        protected DataTable GetSelectedBook(String isbn)
-        {
-            DataTable myTable = new DataTable();
 
-            // Initilize the SqlConnection
+        protected void AddToListButton_ServerClick(object sender, EventArgs e)
+        {
+            String myInsertCommand = "INSERT INTO ReadingListAffiliations (FK_ReadingListID, FK_BookID) VALUES (@readingListID, @bookID)";
+
             using (SqlConnection myConnection = new SqlConnection(myConnectionString))
             {
-                String selectBookCommand = "SELECT BookSummary, BookPageCount FROM Book WHERE BookISBN = @bookISBN";
-                // Initialize the sql command
-                using (SqlCommand myCommand = new SqlCommand(selectBookCommand, myConnection))
+                using (SqlCommand myCommand = new SqlCommand(myInsertCommand, myConnection))
                 {
-                    // Add the select parameters
-                    myCommand.Parameters.AddWithValue("bookISBN", isbn);
+                    if(!(readingListsDDL.SelectedValue == "0"))
+                    {
+                        // Add the parameters
+                        myCommand.Parameters.AddWithValue("readingListID", readingListsDDL.SelectedValue);
+                        myCommand.Parameters.AddWithValue("bookID", SelectedBookID.InnerText);
 
-                    // Open the connection
-                    myConnection.Open();
+                        // Open the connection
+                        myConnection.Open();
 
-                    // Execute the Command and get all the columns
-                    myTable.Load(myCommand.ExecuteReader());
+                        // Execute the Command
+                        myCommand.ExecuteNonQuery();
+
+                        // Close the connection
+                        myConnection.Close();
+                    }
+                    else
+                    {
+                        AddToListFeedbackLiteral.Text = "<small class='error-small'>Please Select a List</small>";
+                    }
                 }
             }
-
-            // Go Through each value and add it to the list
-            return myTable;
         }
     }
 }
