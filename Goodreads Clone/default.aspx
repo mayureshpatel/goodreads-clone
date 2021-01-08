@@ -14,6 +14,10 @@
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <!-- Show all the books in the database -->
     <div class="table-container">
+        <!-- Feedback for when an attempt is made to add a book to a list -->
+        <asp:Literal ID="AddToListFeedbackLiteral" runat="server"></asp:Literal>
+
+        <!-- Gridview to show all the books in the databse -->
         <asp:GridView ID="allBooksGV" runat="server"
             CssClass="all-books-table"
             AutoGenerateColumns="False">
@@ -25,13 +29,9 @@
                 <asp:BoundField DataField="Genres" HeaderText="Genres" SortExpression="Genres" />
                 <asp:BoundField DataField="Summary" HeaderText="Summary" SortExpression="Summary" ItemStyle-CssClass="col-hidden" HeaderStyle-CssClass="col-hidden" />
                 <asp:BoundField DataField="PageCount" HeaderText="PageCount" SortExpression="PageCount" ItemStyle-CssClass="col-hidden" HeaderStyle-CssClass="col-hidden" />
-                
             </Columns>
         </asp:GridView>
     </div>
-
-    <!-- hidden p Tags to hold the selected book id -->
-    <p id="SelectedBookID" runat="server" style="display:none"></p>
 
     <!-- Modal for Adding a Book to a Reading List -->
     <div class="modal">
@@ -69,7 +69,6 @@
                 <small>Summary:</small>
                 <p id="modalBookSummary" runat="server"></p>
             </div>
-            
         </div>
 
         <div class="modal-footer">
@@ -81,18 +80,16 @@
                 <asp:DropDownList ID="readingListsDDL" runat="server"
                     DataSourceID="readingListsSDS"
                     DataTextField="ReadingListName"
-                    DataValueField="ReadingListID" AppendDataBoundItems="true">
+                    DataValueField="ReadingListID"
+                    AppendDataBoundItems="true">
                     <asp:ListItem Selected="True" Text="--Select One--" Value="0"></asp:ListItem>
                 </asp:DropDownList>
 
-                <asp:LinkButton ID="AddToListButton" runat="server" OnClick="AddToListButton_ServerClick">LinkButton</asp:LinkButton>
+                <asp:LinkButton ID="AddToListButton" runat="server" OnClick="AddToListButton_ServerClick">Add To List</asp:LinkButton>
             </div>
+            <!-- A hidden text box to hold the selected book when a postback is made after clicking the add to list button -->
             <div class="mf-feedback">
-                <asp:Literal ID="AddToListFeedbackLiteral" runat="server"></asp:Literal>
-
-                <!-- Experimental feedback -->
-                <p id="JustDoIt" runat="server"></p>
-                <p id="JustDoItAgain" runat="server"></p>
+                <asp:TextBox ID="selectedBookIDTextBox" runat="server" CssClass="col-hidden"></asp:TextBox>
             </div>
         </div>
     </div>
