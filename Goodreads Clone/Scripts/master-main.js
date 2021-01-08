@@ -94,38 +94,46 @@
 
     // When a row in the table is clicked, popup a modal that will add a book into a list
     $(".all-books-table tr").click(function () {
-        // First set a variable for the row that was clicked
-        let currentRow = $(this);
+        // Check if the modal is already open, if it is, don't allow any click functionality
+        if (!$(".modal").css("display").localeCompare("block") == 0) {
+            // First set a variable for the row that was clicked
+            let currentRow = $(this);
 
-        // If the row was not a header row, we want to grab the ISBN value of that row
-        if (this.children[0].tagName === "TD") {
-            // Get the selected rows ISBN value
-            let rowISBN = currentRow.find("td:eq(0)").text();
-            let rowTitle = currentRow.find("td:eq(1)").text();
-            let rowAuthors = currentRow.find("td:eq(2)").text();
-            let rowGenres = currentRow.find("td:eq(3)").text();
+            // If the row was not a header row, we want to grab the ISBN value of that row
+            if (this.children[0].tagName === "TD") {
+                // Get the selected rows ISBN value
+                let rowID = currentRow.find("td:eq(0)").text();
+                let rowISBN = currentRow.find("td:eq(1)").text();
+                let rowTitle = currentRow.find("td:eq(2)").text();
+                let rowAuthors = currentRow.find("td:eq(3)").text();
+                let rowGenres = currentRow.find("td:eq(4)").text();
+                let rowSummary = currentRow.find("td:eq(5)").text();
+                let rowPageCount = currentRow.find("td:eq(6)").text();
 
-            console.log(rowISBN);
+                // Set the text of the appropriate tags in the modal for each information block
+                $("#MainContent_modalBookTitle").text(rowTitle);
+                $("#MainContent_modalBookISBN").text(rowISBN);
+                $("#MainContent_modalBookAuthors").text(rowAuthors);
+                $("#MainContent_modalBookGenres").text(rowGenres);
+                $("#MainContent_modalBookSummary").text(rowSummary);
+                $("#MainContent_modalBookPageCount").text(rowPageCount);
 
-            // Set the text of the hidden p tag to the selected row isbn value
-            $("#MainContent_SelectedISBN").text(rowISBN);
-            $("#MainContent_SelectedTitle").text(rowTitle);
-            $("#MainContent_SelectedAuthors").text(rowAuthors);
-            $("#MainContent_SelectedGenres").text(rowGenres);
+                // Set the text of the hidden p tag so that it reflected the selected value
+                $("#MainContent_SelectedBookID").text(rowID);
 
-
-            // Launch the modal after dimming the background
-            if ($(".modal").css("display").localeCompare("none") == 0) {
-                $("body").css("background-color", "rgba(0, 0, 0, 0.20)");
-                $(".modal").slideToggle(300);
+                // Launch the modal after dimming the background
+                if ($(".modal").css("display").localeCompare("none") == 0) {
+                    $("body").css("background-color", "rgba(0, 0, 0, 0.20)");
+                    $(".modal").slideToggle(300);
+                }
+                else {
+                    $("body").css("background-color", "rgb(255, 255, 255)");
+                    $(".modal").slideToggle(300);
+                }
             }
             else {
-                $("body").css("background-color", "rgb(255, 255, 255)");
-                $(".modal").slideToggle(300);
+                $("#MainContent_SelectedISBN").text(0);
             }
-        }
-        else {
-            $("#MainContent_SelectedISBN").text(0);
         }
     });
 
@@ -143,4 +151,3 @@ function setCopyrightYear() {
 
     document.getElementById("footer-year").innerHTML = currentYear;
 }
-
