@@ -397,7 +397,6 @@ main {
 }
 
 .all-books-table {
-    width: 100%;
 }
 
 .all-books-table th, .all-books-table td {
@@ -572,6 +571,22 @@ main {
     font-size: 16px;
 
     cursor: pointer;
+}
+
+.mf-selectbutton a {
+    padding: 2px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.mf-selectbutton a:hover {
+    background-color: #382110;
+
+    color: white;
 }
 
 .error-small {
