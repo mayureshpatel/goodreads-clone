@@ -117,9 +117,10 @@
                 $("#MainContent_modalBookGenres").text(rowGenres);
                 $("#MainContent_modalBookSummary").text(rowSummary);
                 $("#MainContent_modalBookPageCount").text(rowPageCount);
-
+                
                 // Set the text of the hidden p tag so that it reflected the selected value
                 $("#MainContent_SelectedBookID").text(rowID);
+                $("#MainContent_selectedBookIDTextBox").val(rowID);
 
                 // Launch the modal after dimming the background
                 if ($(".modal").css("display").localeCompare("none") == 0) {
