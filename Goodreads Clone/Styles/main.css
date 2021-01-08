@@ -427,6 +427,10 @@ main {
     background-color: pink;
 }
 
+.col-hidden {
+    display: none;
+}
+
 /* || Home Page: Modal Styling || */
 .modal {
     display: none;
@@ -434,6 +438,7 @@ main {
     top: 15%;
     left: 15%;
     overflow-y: auto;
+    z-index: 100;
 
     width: 70%;
     max-height: 80vh;
@@ -567,6 +572,14 @@ main {
     font-size: 16px;
 
     cursor: pointer;
+}
+
+.error-small {
+    color: red;
+}
+
+.success-small {
+    color: green;
 }
 
 /*
