@@ -17,11 +17,17 @@
     <!-- Select a reading list to display -->
     <div class="rl-select-content">
         <asp:SqlDataSource ID="readingListSDS" runat="server"></asp:SqlDataSource>
-        <asp:Label ID="selectReadingListLabel" runat="server" Text="Select a List"></asp:Label>
-        <asp:DropDownList ID="readingListDDL" runat="server"></asp:DropDownList>
+        <asp:Label ID="selectReadingListLabel" runat="server" Text="Select a List:"></asp:Label>
+        <asp:DropDownList ID="readingListDDL" runat="server"
+            AppendDataBoundItems="true">
+            <asp:ListItem Selected="True" Text="--Select One--" Value="-1"></asp:ListItem>
+            <asp:ListItem Text="New List" Value="0"></asp:ListItem>
+        </asp:DropDownList>
         <asp:TextBox ID="newReadingListTextBox" runat="server"></asp:TextBox>
         <asp:Button ID="submitButton" runat="server" Text="Show List" />
     </div>
+
+    <!-- Table to show the selected data -->
     <div class="rl-list-content">
         <h2 class="rl-list-name" runat="server"></h2>
         <asp:GridView ID="readingListGV" runat="server"></asp:GridView>
