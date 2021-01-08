@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace Goodreads_Clone
@@ -35,12 +36,43 @@ namespace Goodreads_Clone
                         listsReader.Fill(listsDS);
 
                         listsTable = listsDS.Tables[0].Copy();
+                        
+                        // Default html anchors
+                        HtmlAnchor[] defaultControls = { BrowseListItem01, BrowseListItem02, BrowseListItem03, BrowseListItem04, BrowseListItem05 };
+                        
+                        // If the table does not have any rows, we will populate the links with a default value
+                        if(listsTable.Rows.Count == 0)
+                        {
+                            for(int i = 0; i < defaultControls.Length; i++)
+                            {
+                                defaultControls[i].InnerHtml = "Not Enough Data";
+                            }
+                        }
+                        // If the table has some rows but not 5, we will populate what we can, then populate the rest with a default value
+                        else if(listsTable.Rows.Count < 5)
+                        {
+                            // Add the ones that can be added
+                            int nextToAdd = 0;
+                            for(int i = 0; i < listsTable.Rows.Count; i++)
+                            {
+                                defaultControls[i].InnerHtml = (String)listsTable.Rows[i]["ReadingListName"];
+                                nextToAdd = i + 1;
+                            }
 
-                        BrowseListItem01.InnerHtml = (String) listsTable.Rows[0]["ReadingListName"];
-                        BrowseListItem02.InnerHtml = (String) listsTable.Rows[1]["ReadingListName"];
-                        BrowseListItem03.InnerHtml = (String) listsTable.Rows[2]["ReadingListName"];
-                        BrowseListItem04.InnerHtml = (String) listsTable.Rows[3]["ReadingListName"];
-                        BrowseListItem05.InnerHtml = (String) listsTable.Rows[4]["ReadingListName"];
+                            // Add defaults for the others
+                            for(int i = nextToAdd; i < defaultControls.Length; i++)
+                            {
+                                defaultControls[i].InnerHtml = "Not Enough Data";
+                            }
+                        }
+                        // If the table has 5 or more rows, just use those rows
+                        else
+                        {
+                            for(int i = 0; i < defaultControls.Length; i++)
+                            {
+                                defaultControls[i].InnerHtml = (String)listsTable.Rows[i]["ReadingListName"];
+                            }
+                        }
                     }
                 }
 
