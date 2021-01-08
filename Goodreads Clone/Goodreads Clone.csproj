@@ -82,6 +82,7 @@
     <Content Include="Styles\main.css" />
     <Content Include="default.aspx" />
     <Content Include="Styles\Pages_Styles\add-book.css" />
+    <Content Include="Styles\Pages_Styles\reading-lists.css" />
     <Content Include="Styles\reset.css" />
     <Content Include="webfonts\fa-brands-400.svg" />
     <Content Include="webfonts\fa-regular-400.svg" />
