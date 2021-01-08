@@ -15,23 +15,30 @@
     <!-- Show all the books in the database -->
     <div class="table-container">
         <asp:GridView ID="allBooksGV" runat="server"
-            CssClass="all-books-table">
+            CssClass="all-books-table"
+            AutoGenerateColumns="False">
+            <Columns>
+                <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" ItemStyle-CssClass="col-hidden" HeaderStyle-CssClass="col-hidden" />
+                <asp:BoundField DataField="ISBN" HeaderText="ISBN" SortExpression="ISBN" />
+                <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
+                <asp:BoundField DataField="Authors" HeaderText="Authors" SortExpression="Authors" />
+                <asp:BoundField DataField="Genres" HeaderText="Genres" SortExpression="Genres" />
+                <asp:BoundField DataField="Summary" HeaderText="Summary" SortExpression="Summary" ItemStyle-CssClass="col-hidden" HeaderStyle-CssClass="col-hidden" />
+                <asp:BoundField DataField="PageCount" HeaderText="PageCount" SortExpression="PageCount" ItemStyle-CssClass="col-hidden" HeaderStyle-CssClass="col-hidden" />
+                
+            </Columns>
         </asp:GridView>
     </div>
 
-    <!-- Hidden p tag to get the selected row ISBN value to use in the modal -->
-    <p id="SelectedISBN" visible="false" runat="server">Here's some text</p>
-    <p id="SelectedTitle" visible="false" runat="server"></p>
-    <p id="SelectedAuthors" visible="false" runat="server"></p>
-    <p id="SelectedGenres" visible="false" runat="server"></p>
+    <!-- hidden p Tags to hold the selected book id -->
+    <p id="SelectedBookID" runat="server" style="display:none"></p>
 
     <!-- Modal for Adding a Book to a Reading List -->
     <div class="modal">
-        <asp:SqlDataSource ID="ModalSDS" runat="server"></asp:SqlDataSource>
         <div class="modal-header">
             <div class="mh-label-header">
                 <small>Title:</small>
-                <h1>Outliers: The Story of Success</h1>
+                <h1 id="modalBookTitle" runat="server"></h1>
             </div>
             <input type="button" class="close-button" value="&times;" />
         </div>
@@ -41,37 +48,26 @@
             <div class="mc-book-meta">
                 <div class="smc-isbn">
                     <small>ISBN-13:</small>
-                    <h5>9780316017923</h5>
+                    <h5 id="modalBookISBN" runat="server"></h5>
                 </div>
                 <div class="smc-pagecount">
                     <small>Page Count:</small>
-                    <h5>309 Pages</h5>
+                    <h5 id="modalBookPageCount" runat="server"></h5>
                 </div>
             </div>
 
             <div class="mc-author">
                 <small>Author(s):</small>
-                <h3>Malcolm Gladwell</h3>
+                <h3 id="modalBookAuthors" runat="server"></h3>
             </div>
             <div class="mc-genre">
                 <small>Genre(s):</small>
-                <h3>Non Fiction, Psychology, Business</h3>
+                <h3 id="modalBookGenres" runat="server"></h3>
             </div>
             
             <div class="mc-summary">
                 <small>Summary:</small>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id mauris finibus, sagittis
-                    est et, pellentesque libero. Morbi at nisi molestie, vulputate erat fringilla, porta eros. Morbi
-                    nec nibh pulvinar nisi ultricies pellentesque non eu lacus. Sed auctor iaculis turpis, sed
-                    ultrices metus maximus ut. Donec congue accumsan malesuada. Etiam eu ultricies tortor, in dictum
-                    odio. Phasellus et rutrum sapien, eu molestie leo. Sed in nisi augue. Vestibulum euismod pretium
-                    risus, sed rutrum enim. Sed accumsan, leo vel commodo hendrerit, eros magna sollicitudin odio, eu
-                    semper urna sem eu neque. Aenean sagittis, ipsum id pharetra ornare, leo nisi porttitor lectus,
-                    vestibulum mollis nisi arcu a purus. Ut mattis vel dui eu elementum. Pellentesque et lectus ornare,
-                    porta enim a, tempus augue. Sed interdum nisi a suscipit iaculis. Praesent vitae rutrum odio, non
-                    vestibulum mauris. Nunc in magna velit. Donec porttitor magna sem, et auctor leo suscipit ullamcorper.
-                    Nulla facilisi. Vestibulum fauc
-                </p>
+                <p id="modalBookSummary" runat="server"></p>
             </div>
             
         </div>
@@ -85,10 +81,18 @@
                 <asp:DropDownList ID="readingListsDDL" runat="server"
                     DataSourceID="readingListsSDS"
                     DataTextField="ReadingListName"
-                    DataValueField="ReadingListID">
+                    DataValueField="ReadingListID" AppendDataBoundItems="true">
+                    <asp:ListItem Selected="True" Text="--Select One--" Value="0"></asp:ListItem>
                 </asp:DropDownList>
 
-                <input id="AddToListButton" type="button" value="Add to List" />
+                <asp:LinkButton ID="AddToListButton" runat="server" OnClick="AddToListButton_ServerClick">LinkButton</asp:LinkButton>
+            </div>
+            <div class="mf-feedback">
+                <asp:Literal ID="AddToListFeedbackLiteral" runat="server"></asp:Literal>
+
+                <!-- Experimental feedback -->
+                <p id="JustDoIt" runat="server"></p>
+                <p id="JustDoItAgain" runat="server"></p>
             </div>
         </div>
     </div>
