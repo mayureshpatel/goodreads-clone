@@ -143,6 +143,23 @@
         // slide toggle the modal
         $(".modal").slideToggle(300);
     });
+
+    // When the drop down list in the reading lists' selected value is changed, turn the textbox on and off
+    $("#MainContent_readingListDDL").change(function () {
+        // Get the select element
+        let readingListDDL = $(this);
+
+        // Get the selected value
+        let selectedValue = readingListDDL.val();
+
+        // If the selected value is 0, then turn on the textbox
+        if (selectedValue === "0") {
+            $("#MainContent_newReadingListTextBox").css("display", "block");
+        }
+        else {
+            $("#MainContent_newReadingListTextBox").css("display", "none");
+        }
+    });
 });
 
 // Function to get the current year to display in the copyright section
