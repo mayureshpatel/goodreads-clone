@@ -15,6 +15,7 @@ namespace Goodreads_Clone
         // Instance Variables
         protected static String myConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ReadingDBConnectionString"].ConnectionString;
         protected DataSet modifiedDataSet = new DataSet();
+        protected String currentSelectedItem = "0";
 
         /**
          * Method to run when the page is loaded after landing on it or through a postback event
@@ -234,6 +235,9 @@ namespace Goodreads_Clone
 
         }
 
+        /**
+         * Adds a book to a list after click the AddToListButton LinkButton control
+         */
         protected void AddToListButton_ServerClick(object sender, EventArgs e)
         {
             String myInsertCommand = "INSERT INTO ReadingListAffiliations (FK_ReadingListID, FK_BookID) VALUES (@readingListID, @bookID)";
@@ -246,16 +250,26 @@ namespace Goodreads_Clone
                     {
                         // Add the parameters
                         myCommand.Parameters.AddWithValue("readingListID", readingListsDDL.SelectedValue);
-                        myCommand.Parameters.AddWithValue("bookID", SelectedBookID.InnerText);
+                        myCommand.Parameters.AddWithValue("bookID", selectedBookIDTextBox.Text);
 
                         // Open the connection
                         myConnection.Open();
 
                         // Execute the Command
-                        myCommand.ExecuteNonQuery();
+                        int rowsAffected = myCommand.ExecuteNonQuery();
 
                         // Close the connection
                         myConnection.Close();
+
+                        // Display the results
+                        if(rowsAffected > 0)
+                        {
+                            AddToListFeedbackLiteral.Text = "<small class='success-small'>Successfully Added Book To List</small>";
+                        }
+                        else
+                        {
+                            AddToListFeedbackLiteral.Text = "<small class='error-small'>Could Not Add Book To List</small>";
+                        }
                     }
                     else
                     {
