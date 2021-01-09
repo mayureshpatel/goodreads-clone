@@ -33,14 +33,35 @@
         <asp:Button ID="submitButton" runat="server" Text="Show List" />
     </div>
 
+    <!-- Feedback for when a new list is created -->
+    <asp:Literal ID="newListFeedbackLiteral" runat="server"></asp:Literal>
+
     <!-- Table to show the selected data -->
     <div class="rl-list-content">
-        <h2 class="rl-list-name" runat="server"></h2>
         <asp:SqlDataSource ID="readingListBooksSDS" runat="server"></asp:SqlDataSource>
-        <asp:GridView ID="readingListDefaultGV" runat="server" Visible="true"></asp:GridView>
+        <asp:SqlDataSource ID="readingListDefaultSDS" runat="server"
+            ConnectionString="<%$ ConnectionStrings:ReadingDBConnectionString %>"
+            SelectCommand="SELECT ReadingList.ReadingListID, ReadingList.ReadingListName AS ListName, COUNT(ReadingListAffiliations.FK_BookID) AS BookCount
+                FROM ReadingList
+                LEFT OUTER JOIN ReadingListAffiliations ON ReadingList.ReadingListID = ReadingListAffiliations.FK_ReadingListID
+                GROUP BY ReadingList.ReadingListName, ReadingList.ReadingListID
+                ORDER BY ReadingList.ReadingListID">
+        </asp:SqlDataSource>
+        <asp:GridView ID="readingListDefaultGV" runat="server"
+            CssClass="reading-lists-table"
+            AutoGenerateColumns="False"
+            DataSourceID="readingListDefaultSDS"
+            DataKeyNames="ReadingListID">
+            <Columns>
+                <asp:BoundField DataField="ReadingListID" HeaderText="ReadingListID" SortExpression="ReadingListID" ReadOnly="True" ItemStyle-CssClass="col-hidden" HeaderStyle-CssClass="col-hidden" />
+                <asp:BoundField DataField="ListName" HeaderText="ListName" SortExpression="ListName" />
+                <asp:BoundField DataField="BookCount" HeaderText="BookCount" ReadOnly="True" SortExpression="BookCount" />
+            </Columns>
+        </asp:GridView>
         <asp:GridView ID="readingListSelectedGV" runat="server"
             AutoGenerateColumns="false"
-            Visible="false">
+            Visible="false"
+            CssClass="reading-lists-table">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" ItemStyle-CssClass="col-hidden" HeaderStyle-CssClass="col-hidden" />
                 <asp:BoundField DataField="ISBN" HeaderText="ISBN" SortExpression="ISBN" />

@@ -17,19 +17,61 @@ namespace Goodreads_Clone.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             // When the page is loaded, load the table with values that need to be shown
-            if(readingListDDL.SelectedValue == "0" || readingListDDL.SelectedValue == "-1")
+            if(readingListDDL.SelectedValue == "-1")
             {
-                String selectCommand = "SELECT ReadingList.ReadingListName, COUNT(ReadingListAffiliations.FK_BookID) AS BookCount" +
-                    " FROM ReadingList" +
-                    " LEFT OUTER JOIN ReadingListAffiliations ON ReadingList.ReadingListID = ReadingListAffiliations.FK_ReadingListID" +
-                    " GROUP BY ReadingList.ReadingListName";
-                readingListBooksSDS.SelectCommand = selectCommand;
-                readingListBooksSDS.ConnectionString = myConnectionString;
-                readingListDefaultGV.DataSource = readingListSDS;
-                readingListDefaultGV.DataBind();
-
                 readingListSelectedGV.Visible = false;
                 readingListDefaultGV.Visible = true;
+
+                // Make sure the feedback literal is not shown
+                newListFeedbackLiteral.Text = "";
+            }
+            else if(readingListDDL.SelectedValue == "0")
+            {
+                // If the textbox is empty, then just display the lists that are currently in the database
+                if(newReadingListTextBox.Text.Length == 0)
+                {
+                    readingListSelectedGV.Visible = false;
+                    readingListDefaultGV.Visible = true;
+
+                    // Make sure the feedback literal provides feeback
+                    newListFeedbackLiteral.Text = "<small class='error-small'>Enter the Name of Your New List</small>";
+                }
+                else
+                {
+                    // Add the new list to the database
+                    String insertNewListCommand = "INSERT INTO ReadingList (ReadingListName) VALUES (@listItem)";
+                    using (SqlConnection myConnection = new SqlConnection(myConnectionString))
+                    {
+                        using (SqlCommand myCommand = new SqlCommand(insertNewListCommand, myConnection))
+                        {
+                            // Add the parameters
+                            myCommand.Parameters.AddWithValue("listItem", newReadingListTextBox.Text);
+
+                            // Open the connection
+                            myConnection.Open();
+
+                            // Execute the command
+                            int rowsAffected = myCommand.ExecuteNonQuery();
+
+                            // Close the connection
+                            myConnection.Close();
+
+                            // Set the feedback literal based on the rows affected
+                            if(rowsAffected == 0)
+                            {
+                                newListFeedbackLiteral.Text = "<small class='error-small'>Insertion Unsuccessful</small>";
+                            }
+                            else
+                            {
+                                newListFeedbackLiteral.Text = "<small class='success-small'>Insertion Successful</small>";
+                            }
+                        }
+                    }
+
+                    // Display the updated reading lists
+                    readingListSelectedGV.Visible = false;
+                    readingListDefaultGV.Visible = true;
+                }
             }
             else
             {
@@ -192,6 +234,9 @@ namespace Goodreads_Clone.Pages
 
                         readingListSelectedGV.Visible = true;
                         readingListDefaultGV.Visible = false;
+
+                        // Make sure the feedback literal is not shown
+                        newListFeedbackLiteral.Text = "";
                     }
                 }
             }

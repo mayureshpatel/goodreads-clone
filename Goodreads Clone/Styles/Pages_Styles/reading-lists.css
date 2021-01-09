@@ -23,16 +23,14 @@
 .rl-select-content input[type="text"] {
     display: none;
     position: absolute;
-    left: 101px;
-    top: 11px;
+    left: 102px;
+    top: 12px;
 
     width: 200px;
-    padding: 5px;
+    padding: 4px;
     border: none;
 
     font-size: 16px;
-
-    background-color: blue;
 }
 
 .rl-select-content input[type="text"]:focus {
@@ -56,6 +54,23 @@
     color: white;
 }
 
-.rl-list-content {
+.reading-lists-table {
+    overflow-x: auto;
+}
 
+.reading-lists-table th, .reading-lists-table td {
+    padding: 10px;
+    min-width: 150px;
+
+    font-size: 16px;
+}
+
+.reading-lists-table th {
+    background-color: #382110;
+
+    color: white;
+}
+
+.reading-lists-table tr:hover {
+    background-color: #e4e4e4;
 }
