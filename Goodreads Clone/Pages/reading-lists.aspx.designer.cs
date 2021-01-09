@@ -60,12 +60,30 @@ namespace Goodreads_Clone.Pages
         protected global::System.Web.UI.WebControls.Button submitButton;
 
         /// <summary>
-        /// readingListGV control.
+        /// readingListBooksSDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView readingListGV;
+        protected global::System.Web.UI.WebControls.SqlDataSource readingListBooksSDS;
+
+        /// <summary>
+        /// readingListDefaultGV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView readingListDefaultGV;
+
+        /// <summary>
+        /// readingListSelectedGV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView readingListSelectedGV;
     }
 }
